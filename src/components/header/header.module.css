@@ -1,0 +1,147 @@
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    width: 90%;
+    margin: 0 auto;
+    font-weight: 700;
+  }
+  .oga{
+    border-bottom: 2px solid black;
+  }
+  .upperDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    color: orange;
+    width: auto;
+    margin: 0;
+}
+  
+  .categoriesDiv {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 20%;
+    margin-right: 10px;
+
+  }
+  .categoriesDiv small{
+    font-size: 20px;
+  }
+  .catSearchDiv {
+    width: 85%;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+
+  }
+  
+  .searchDiv {
+    width: 80%;
+    position: relative; 
+
+  }
+  
+  .iconsDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .searchInput {
+    width: 92%;
+    padding: 10px 30px 10px 10px;
+    font-size: 16px;
+    border: 3px solid black;
+    background-color:#fff ;
+    border-radius: 30px;
+    height: 40px;
+  }
+  
+  .lowerDiv {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+  }
+  @media (min-width: 970px) and (max-width: 1200px) {
+   .iconDiv{
+    width: 30%;
+   }
+  }
+  
+
+
+  /* Media Query */
+  @media (max-width: 997px) {
+    .header {
+      /* background-color: purple; */
+      width: 95%;
+      padding-left: 10px !important;
+    }
+    .upperDiv{
+        margin: 0;
+    }
+    .lowerDiv {
+      display: none; /* Hide the lowerDiv */
+    }
+    .iconsDiv {
+        display: flex;
+        justify-content: space-between;
+        width: 32%;
+        gap: 4px;
+        margin: 0;
+        align-items: center;
+      }
+      
+    .catSearchDiv {
+      order: 2; 
+      margin-top: 20px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 0;
+
+    }
+    .searchDiv{
+        width: 99%;
+    }
+     .searchInput{
+        width: 90%;
+     }
+    .upperDiv {
+      flex-wrap: wrap; /* Allows elements to wrap */
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+    .categoriesDiv {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 0;
+        width: 6%;
+        margin-right: 7px;
+      }
+    .categoriesDiv small{
+        display: none;
+    }
+  }
+  

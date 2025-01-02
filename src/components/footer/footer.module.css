@@ -1,0 +1,80 @@
+.firstDiv{
+    background-color: #d7e6f2;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.firstDiv p{
+    font-size: 15px;
+    font-weight: 700;
+    font-size: 16px;
+}
+.subscribe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+}
+.firstDiv input{
+    width: 300px;
+    height: 50px;
+    padding: 7px;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 17px;
+}
+.firstDiv button{
+    width: 100px;
+    height: 63px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-weight: 700;
+    margin-top: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.firstDiv button:hover{
+    background-color: black;
+    color: white;
+}
+.secondDiv{
+    background-color: #4f96f3;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.secondDiv p{
+    font-size: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    border-bottom: dashed;
+    color: white;
+}
+.thirdDiv{
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
+.sectionOne{
+    background-color: rgba(23, 23, 102, 0.87);
+    width: 50%;
+}
+
+.sectionTwo{
+    background-color: royalblue;
+    display: flex;
+}
