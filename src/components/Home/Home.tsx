@@ -1,9 +1,12 @@
-import { Head } from "../layout/Head";
+import { Layout } from "../layout/Layout";
 
 export const Home = () => {
   return (
     <div>
-      <Head />
+      <Layout>
+        <h1>Hello world</h1>
+        yooooo
+      </Layout>
     </div>
   );
 };
