@@ -3,7 +3,7 @@ import { CartProvider } from "./lib/useContext"; // Import CartProvider from the
 
 export const App = () => {
   return (
-    <div>
+    <div className="App">
       <CartProvider>
         <Home />
       </CartProvider>
