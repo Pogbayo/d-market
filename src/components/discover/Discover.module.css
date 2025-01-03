@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 100%;
+    position: relative;
+  }
+  
+  .container h2 {
+    color: black;
+  }
+  
+  .roundedShapeWrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 260px;
+    width: 100%;
+    overflow-x: auto; 
+    scroll-behavior: smooth; 
+    padding-bottom: 10px; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  
+  .roundedShapeWrapper::-webkit-scrollbar {
+    height: 8px; 
+  }
+  
+  .roundedShapeWrapper::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .roundedShapeWrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .roundedShapeWrapper > div {
+    transition: transform 0.3s ease;
+    max-width: 200px; 
+    flex: 0 0 auto; 
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    box-sizing: border-box; 
+  }
+  
+  .roundedShapeWrapper {
+    margin-left: 10px; 
+  }
+  
+  @media (max-width: 768px) {
+    .container h2{
+      font-size: 16px;
+    }
+   
+ }
