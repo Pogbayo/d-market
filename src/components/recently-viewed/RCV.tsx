@@ -1,14 +1,18 @@
 import React from "react";
 import styles from "./rcv.module.css";
+import { Products } from "../products/products";
 const RCV: React.FC = () => {
   return (
     <div className={styles.container}>
       <span className={styles.title}>
         <p className={styles.titleText}>Recently Viewed & more</p>
-        <p className={styles.titleText}>
+        <p className={styles.titleTextTwo}>
           Show more from the <a href="">RedCoopCollectibles</a>shop
         </p>
       </span>
+      <div>
+        <Products />
+      </div>
     </div>
   );
 };

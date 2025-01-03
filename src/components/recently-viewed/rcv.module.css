@@ -2,8 +2,8 @@
   margin: 0 auto;
   width: 93%;
   padding: 0 ;
-  border: 2px solid black;
 }
+
 .title{
     display: flex;
     justify-content: space-between;
@@ -16,7 +16,21 @@
 .titleText{
     color: gray;
 }
+.titleTextTwo{
+    color: gray;
+}
 .titleText a{
     color: gray;
     margin: 3px;
+}
+
+@media (max-width:600px){
+    .title{
+        font-size: 0.8rem;
+        padding: 0;
+    }
+    .titleTextTwo{
+        color: gray;
+    }
+    .titleText{width: 65%;}
 }

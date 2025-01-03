@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from "axios";
 export type APIResponse = {
   id?: number;
   name?: string;
-  [key: string]: unknown;
+  [key: string]: ReactNode;
 };
 
 type cartItem = {
@@ -37,7 +37,7 @@ type CartProviderProps = {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<cartItem[]>([]);
   const [name, setName] = useState<string>("Adebayo");
-  const [fetchedData, setFetchedData] = useState<APIResponse[] | null>(null); // State to store API response
+  const [fetchedData, setFetchedData] = useState<APIResponse[] | []>([]); // State to store API response
 
   const addItem = (item: cartItem) => {
     setItems((prevItems) => {
@@ -67,7 +67,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           "https://fakestoreapi.com/products"
         );
         setFetchedData(response.data);
-        console.log(response.data);
+        console.log("Hellow", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
