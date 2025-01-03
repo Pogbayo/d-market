@@ -67,7 +67,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           "https://fakestoreapi.com/products"
         );
         setFetchedData(response.data);
-        console.log("Hellow", response.data);
+        // console.log("Hellow", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

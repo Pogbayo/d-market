@@ -3,7 +3,8 @@ import styles from "./products.module.css";
 
 export const Products = () => {
   const { fetchedData } = useCart();
-  const limitedData = fetchedData?.slice(0, 10);
+  const limitedData = fetchedData?.slice(7, 20);
+  console.log(limitedData);
 
   return (
     <div className={styles.container}>
