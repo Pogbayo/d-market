@@ -1,10 +1,11 @@
 import styles from "./footer.module.css";
 import { AiOutlineGlobal } from "react-icons/ai";
+import { BsGlobeAmericas } from "react-icons/bs";
 
 export const Footer = () => {
   return (
     <div>
-      <footer style={{ color: "black" }}>
+      <div style={{ color: "black" }} className={styles.footer}>
         <div className={styles.firstDiv}>
           <p>
             Yes! Send me exclusive offers,unique gift ideas, and personalized
@@ -26,6 +27,7 @@ export const Footer = () => {
             <button className={styles.btnOne}>Dark</button>
             <button className={styles.btnTwo}>Download the Dark App</button>
           </section>
+
           <section className={styles.sectionTwo}>
             <div>
               <p>Shop</p>
@@ -72,14 +74,16 @@ export const Footer = () => {
 
         <div className={styles.fourthDiv}>
           <ul>
-            <li>Nigeria</li>
-            <span></span>
+            <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <BsGlobeAmericas />
+              <span>Nigeria</span>
+            </li>
             <li>English (US)</li>
-            <span></span>
             <li>₦ (NGN)</li>
           </ul>
-          <p>© 2025 Dark, Inc. Te </p>
-          <span>
+
+          <section className={styles.spanTwo}>
+            <p>© 2025 Dark, Inc. Te </p>
             <ul>
               <li>Terms of use</li>
               <li>Privacy</li>
@@ -87,9 +91,9 @@ export const Footer = () => {
               <li>Local shops</li>
               <li>Regions</li>
             </ul>
-          </span>
+          </section>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };

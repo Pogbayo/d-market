@@ -1,3 +1,4 @@
+
 .firstDiv{
     background-color: #d7e6f2;
     height: 190px;
@@ -71,10 +72,259 @@
 }
 .sectionOne{
     background-color: rgba(23, 23, 102, 0.87);
-    width: 50%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
 }
-
+.btnOne{
+    width: 100px;
+    height: 80px;
+    border: none;
+    background-color: orangered;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.btnOne::first-letter {
+    font-size: 1.3em; 
+    color: white;     
+    font-weight: bold;
+  }
+.btnTwo{
+    width: 300px;
+    height: 80px;
+    border: none;
+    background-color: rgba(23, 23, 102, 0.87);
+    border-radius: 40px;
+    color: white;
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
 .sectionTwo{
     background-color: royalblue;
     display: flex;
+    width: 60%;
+}
+.sectionTwo div{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.sectionTwo p{
+    font-size: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    margin-left: 20px;
+}
+.sectionTwo ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+}
+.sectionTwo ul li{
+    list-style: none;
+    font-size: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    
+}
+.sectionTwo ul li:hover{
+    color: black;
+    padding: 5px;
+    text-decoration: underline;
+}
+
+.thirdDiv{
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+.fourthDiv {
+    background-color: rgb(48, 47, 47);
+    padding: 20px; /* Add padding for better visual appearance */
+    text-align: center; /* Center-align the content */
+    clear: both; /* Prevent overlap if floats are used above */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 70px;
+    padding-left: 70px;
+}
+
+.fourthDiv ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Add spacing between list items */
+    padding: 0;
+    list-style: none;
+}
+
+.fourthDiv ul li {
+    font-size: 16px;
+    color: white;
+}
+
+.fourthDiv p {
+    font-size: 14px;
+    color: white;
+    margin: 10px 0;
+}
+/* .fourthDiv span{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid rgb(177, 132, 132);
+
+} */
+
+.spanTwo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.fourthDiv span ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Add spacing between list items */
+    padding: 0;
+    list-style: none;
+}
+
+.fourthDiv span ul li {
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+
+.fourthDiv span ul li:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+.spanTwo ul {
+    display: flex;
+    
+    }
+
+@media (max-width:600px){
+    .sectionTwo div ul{
+        display: none;
+    }
+    .sectionTwo{
+        flex-direction: column;
+    }
+   
+    .spanTwo{
+        width: 300px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .spanTwo ul {
+        flex-direction: column;
+    }
+}
+
+
+
+@media (max-width:997px){
+    .firstDiv p{
+        font-size: 15px;
+        text-align: center;
+    }
+    .subscribe{
+        width: 80%;
+    }
+    .firstDiv input{
+        width: 60%;
+        height: 45px;
+        padding: 7px;
+        background-color: white;
+        border-radius: 5px;
+        border: none;
+        margin-top: 10px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-size: 17px;
+    }
+    .firstDiv button{
+        width: 30%;
+        height: 60px;
+        border: none;
+        background-color: white;
+        border-radius: 5px;
+        color: black;
+        font-weight: 700;
+        margin-top: 10px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+    .secondDiv {
+       flex-direction: column;
+       padding-top: 10px;
+    }
+    .thirdDiv{
+        flex-direction: column;
+        width: 100vw;
+        /* background-color: rosybrown; */
+        padding-bottom: 0;
+    }
+    .sectionOne{
+        width: 100%;
+        order: 1;
+        flex-direction: row;
+        padding: 30px;
+    }
+    .btnOne{
+        width: 60px;
+        height: 50px;
+        border: none;
+        background-color: orangered;
+        border-radius: 5px;
+        color: white;
+        font-weight: 700;
+        margin-top: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .btnTwo{
+        width: 200px;
+        height: 50px;
+        border: none;
+        background-color: royalblue;
+        color: white;
+        font-weight: 700;
+        margin-top: 10px;
+        font-size: 13px;
+        cursor: pointer;
+    }
+    .sectionTwo{
+        width: 100%;
+    }
+    .sectionTwo div{
+        width: 100%;
+    }
+    .fourthDiv{
+        flex-direction: column;
+
+    }
+    .fourthDiv ul{
+        width: 500px;
+
+    }
+    
 }
