@@ -31,8 +31,15 @@ export const Header = () => {
             </div>
           </div>
           <div className={styles.lowerDiv}>
-            <span>
-              <LuGift />
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+                justifyContent: "center",
+              }}
+            >
+              <LuGift size={20} />
               <small>Gifts</small>
             </span>
             <span>

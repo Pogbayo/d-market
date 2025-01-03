@@ -1,7 +1,6 @@
 .container{
-    width: 80%;
+    width: 75%;
     margin: 30px auto 0 auto;
-    border: 2px solid black;
 }
 .imgContainer{
     display: flex;
@@ -10,18 +9,31 @@
     padding: 0;
     width: 100%;
     height: 100%;
+    align-items: center;
 }
 .imgOne{
-    width: 60%;
-    height: 400px;
+    width: 63%;
+    height: 450px;
     position: relative;
     border-radius: 20px;
+    transition: all 0.3s ease;
+
 }
 .imgTwo{
     width: 35%;
-    height: 400px;
+    height: 450px;
     position: relative;
     border-radius: 20px;
+    transition: all 0.2s ease;
+
+}
+.imgOne:hover{
+    transform: scale(1.01);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.imgTwo:hover{
+    transform: scale(1.01);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 .shopNow{
    position: relative;
@@ -46,8 +58,59 @@
     transform: scale(1.05); 
     border-color: white; 
 }
-/* @media (max-width:800px){
-    .container{
-        border: 2px solid black;
+
+@media (max-width: 1900px){
+   .container{
+         width: 85%;
+         }
+        
+}
+@media (max-width: 1700px){
+   .container{
+         width: 89%;
+        }
+} 
+ @media (max-width: 1500px){
+   .container{
+         width: 93%;
+   }
+} 
+@media (max-width: 1450px){
+   .container{
+         width: 96%;
+        }
+        .imgOne{
+            width: 100%;
+        }
+        .imgTwo{
+            display: none;
+        }
+        .shopNow{
+            bottom: 70px;
+            left: 40%;
+        }
+}
+@media (max-width: 900px){
+    .shopNow{
+        bottom: 70px;
+        left: 40%;
+        /* color: red; */
     }
-} */
+}
+
+@media (max-width:800px){
+    /* .container{
+        border: 2px solid black;
+    } */
+    .imgOne{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .shopNow{
+        bottom: 70px;
+        left: 40%;
+        color: red;
+
+     }
+   
+}

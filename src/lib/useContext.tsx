@@ -1,5 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
+import axios, { AxiosResponse } from "axios";
+
+export type APIResponse = {
+  id?: number;
+  name?: string;
+  [key: string]: unknown;
+};
 
 type cartItem = {
   id: string;
@@ -10,11 +17,12 @@ type cartItem = {
 
 type CartContextType = {
   items: cartItem[];
-  name: string; // Add the new 'name' value to the context type
+  name: string;
   setName: (name: string) => void;
   addItem: (item: cartItem) => void;
   removeItem: (id: string) => void;
   clearCart: () => void;
+  fetchedData: APIResponse[] | null;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -28,7 +36,8 @@ type CartProviderProps = {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<cartItem[]>([]);
-  const [name, setName] = useState<string>("Adebayo"); // Initialize name in state
+  const [name, setName] = useState<string>("Adebayo");
+  const [fetchedData, setFetchedData] = useState<APIResponse[] | null>(null); // State to store API response
 
   const addItem = (item: cartItem) => {
     setItems((prevItems) => {
@@ -51,6 +60,22 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setItems([]);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: AxiosResponse<APIResponse[]> = await axios.get(
+          "https://fakestoreapi.com/products"
+        );
+        setFetchedData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <CartContext.Provider
       value={{
@@ -60,6 +85,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         removeItem,
         clearCart,
         setName,
+        fetchedData,
       }}
     >
       {children}

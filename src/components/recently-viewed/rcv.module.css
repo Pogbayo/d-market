@@ -1,0 +1,22 @@
+.container {
+  margin: 0 auto;
+  width: 93%;
+  padding: 0 ;
+  border: 2px solid black;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+.titleText{
+    color: gray;
+}
+.titleText a{
+    color: gray;
+    margin: 3px;
+}
