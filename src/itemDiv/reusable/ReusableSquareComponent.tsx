@@ -1,13 +1,14 @@
-import { useCart } from "../../lib/usecart";
-import styles from "./products.module.css";
-
-export const Products = () => {
-  const { fetchedData } = useCart();
-  const limitedData = fetchedData?.slice(7, 13);
-
+import { ReactNode } from "react";
+import styles from "./reusablecomponent.module.css";
+export type APIResponse = {
+  id?: number;
+  name?: string;
+  [key: string]: ReactNode;
+};
+export const ReusableComponent = ({ data }: { data: APIResponse[] }) => {
   return (
     <div className={styles.container}>
-      {limitedData?.map((item) => {
+      {data?.map((item) => {
         const imageSrc =
           typeof item.image === "string" ? item.image : "/fallback-image.jpg";
 

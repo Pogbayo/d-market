@@ -23,6 +23,7 @@
     scroll-behavior: smooth; 
     padding-bottom: 10px; 
     scrollbar-width: none; 
+    padding-left: 200px;
     -ms-overflow-style: none; 
   }
   
