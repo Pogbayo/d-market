@@ -74,7 +74,10 @@
     gap: 12px;
     padding: 3px;
   }
-
+.product p{
+    font-size: 14px;
+    padding: 4px;
+}
   .product {
     padding: 12px; 
     font-size: 14px; 
