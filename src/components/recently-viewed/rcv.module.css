@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  width: 93%;
+  width: 75%;
   padding: 0 ;
 }
 
@@ -22,6 +22,11 @@
 .titleText a{
     color: gray;
     margin: 3px;
+}
+@media (max-width:1700px){
+   .container{
+    width: 95%;
+   }
 }
 
 @media (max-width:600px){
