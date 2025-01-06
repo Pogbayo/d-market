@@ -7,6 +7,7 @@
     padding: 20px;
     width: 75%;
     position: relative;
+   
   }
   
   .container h2 {
@@ -26,7 +27,9 @@
     padding-left: 500px;
     -ms-overflow-style: none; 
   }
-  
+  /* .roundedShapeWrapper :first-child{
+    padding-left: 60px;
+  } */
   .roundedShapeWrapper::-webkit-scrollbar {
     height: 8px; 
   }
@@ -58,7 +61,11 @@
       width: 96%;
     }
   }
-  
+  /* @media (min-width: 1400px) {
+    .roundedShapeWrapper :first-child{
+      padding-left: 60px;
+    }
+  } */
   @media (max-width: 768px) {
 
     .container h2{

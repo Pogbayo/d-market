@@ -1,4 +1,4 @@
-import { ReusableComponent } from "../../itemDiv/reusable/ReusableSquareComponent";
+import { ReusableComponent } from "./reusable/ReusableSquareComponent";
 import { useCart } from "../../lib/usecart";
 import styles from "./recentlyviewedtwo.module.css";
 
@@ -14,10 +14,26 @@ export const RecentlyViewedTwo = () => {
         <div className={styles.threeDivsContainer}>
           <p>Because you recently viewed</p>
           <div>
-            <img src={`${lastDataImageUrl}`} alt="" />
-            <img src={`${lastDataImageUrl}`} alt="" />
-            <img src={`${lastDataImageUrl}`} alt="" />
-            <img src={`${lastDataImageUrl}`} alt="" />
+            <img
+              className={fetchedData ? styles.img : styles.shimmer}
+              src={`${lastDataImageUrl}`}
+              alt=""
+            />
+            <img
+              className={fetchedData ? styles.img : styles.shimmer}
+              src={`${lastDataImageUrl}`}
+              alt=""
+            />
+            <img
+              className={fetchedData ? styles.img : styles.shimmer}
+              src={`${lastDataImageUrl}`}
+              alt=""
+            />
+            <img
+              className={fetchedData ? styles.img : styles.shimmer}
+              src={`${lastDataImageUrl}`}
+              alt=""
+            />
           </div>
         </div>
         <div className={styles.container}>

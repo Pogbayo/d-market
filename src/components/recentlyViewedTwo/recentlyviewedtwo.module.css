@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-
 }
-
 .container {
     display: flex;
     margin: 10px auto 0 auto;
@@ -14,7 +12,29 @@
     height: 400px;
     overflow: hidden;
   }
-
+  .shimmer {
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      #e0e0e0 0%,
+      #f5f5f5 50%,
+      #e0e0e0 100%
+    ); 
+    position: absolute;
+    top: 0;
+    left: -100%; 
+    animation: shimmer 1.5s infinite; 
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
   .threeDivsContainer{
     display: flex;
     margin-left: 50px;
@@ -27,7 +47,7 @@
     margin: 0;
     font-weight: 700;
     color: black;
-    font-size: 20px;
+    font-size: 215x;
   }
   .threeDivsContainer div{
     display: flex;
@@ -55,7 +75,7 @@
     flex: 0 0 49%;  
     padding: 10px;
     text-align: center;
-    max-height: 90%;
+    max-height: 80%;
     border-radius: 8px;
     border-left: 1px solid black;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -70,9 +90,6 @@
     justify-content: center;
     display:flex;
   }
-
-  /* Skeleton loader container */
-
   
   @media (max-width: 500px) {
     .container{

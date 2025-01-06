@@ -1,4 +1,4 @@
-import { RoundedShape } from "../../itemDiv/roundedShape/RoundedShape";
+import { RoundedShape } from "./roundedShape/RoundedShape";
 import styles from "./Discover.module.css";
 
 export const Discover = () => {

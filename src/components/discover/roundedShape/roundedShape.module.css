@@ -17,35 +17,31 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
  }
+ 
  .product:hover {
     transform: scale(1.05);
     box-shadow: 2px 4px 8px 4px rgba(18, 17, 17, 0.2);
+    border-radius: 20px;
   }
- /* .roundDiv:hover {
-    transform: scale(1.05);
-    box-shadow: 2px 4px 8px rgba(104, 102, 102, 0.2);
-    border: none;
-  } */
-  
+ 
   .roundDiv{
-    width: 150px;       /* Ensures the width is fixed */
-    height: 200px;      /* Ensures the height matches the width */
-    padding: 0;         /* No padding inside the circle */
+    width: 150px;       
+    height: 200px;     
+    padding: 0;        
     text-align: center;
-    border-radius: 50%; /* Perfect circle */
+    border-radius: 50%; 
     font-size: 16px;
     background-size: cover;
     border: 1px solid rgb(226, 220, 220);
     background-position: cover;
     position: relative;
-    box-sizing: border-box; /* Ensures borders are included in the element's size */
+    box-sizing: border-box; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
  .product p{
     color: black;
     font-size: 1rem;
     margin: 0;
-    background-color: white;
     padding: 8px;
     border-radius: 30px;
     font-weight: 500;

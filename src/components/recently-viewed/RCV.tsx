@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./rcv.module.css";
-import { Products } from "../../itemDiv/products/products";
+import { Products } from "./products/products";
 const RCV: React.FC = () => {
   return (
     <div className={styles.container}>

@@ -1,4 +1,4 @@
-import { useCart } from "../../lib/usecart";
+import { useCart } from "../../../lib/usecart";
 import styles from "./products.module.css";
 
 export const Products = () => {
