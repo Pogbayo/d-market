@@ -1,0 +1,144 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.upperDiv {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.title {
+  color: gray;
+  font-size: 14px;
+}
+
+.subtitle {
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
+
+.description {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.shopButton {
+  background-color: rgb(174, 174, 174);
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+.shopButton:hover {
+  background-color: darkgray;
+}
+
+.productSection {
+  display: flex;
+  gap: 15px;
+  width: 50%;
+}
+
+.productCard {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.priceTag {
+  position: absolute;
+  bottom: -20px;
+  left: 10px; 
+  transform: translateY(10px);
+  background-color: white; 
+  color: black;
+  padding: 5px 10px; 
+  border-radius: 16px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0; 
+  transition: 
+    opacity 0.3s ease-in-out, 
+    transform 0.3s ease-in-out, 
+    bottom 0.3s ease-in-out;
+}
+
+.productCard:hover .priceTag {
+  opacity: 1; 
+  bottom: 10px; 
+  transform: translateY(0); 
+}
+
+.lowerDiv {
+  margin-top: 20px;
+  display: flex;
+}
+.roductSection{
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+.roductCard{
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.riceTag {
+  position: absolute;
+  bottom: -20px;
+  left: 10px; 
+  transform: translateY(10px);
+  background-color: white; 
+  color: black;
+  padding: 5px 10px; 
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0; 
+  transition: 
+    opacity 0.3s ease-in-out, 
+    transform 0.3s ease-in-out, 
+    bottom 0.3s ease-in-out;
+}
+
+.roductCard:hover .riceTag {
+  opacity: 1; 
+  bottom: 10px; 
+  transform: translateY(0); 
+} 

@@ -3,8 +3,44 @@ import { AiOutlineGlobal } from "react-icons/ai";
 import { BsGlobeAmericas } from "react-icons/bs";
 
 export const Footer = () => {
+  const textarray = [
+    {
+      title: "A community doing good",
+      text: "Etsy is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet. Here are some of the ways we’re making a positive impact, together.",
+    },
+    {
+      title: "Support independent creators",
+      text: "There’s no Etsy warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.",
+    },
+    {
+      title: "Peace of mind",
+      text: "Your privacy is the highest priority of our dedicated team. And if you ever need assistance, we are always ready to step in for support.",
+    },
+  ];
   return (
     <div>
+      <div className={styles.yellowBackground}>
+        <p className={styles.mainQstn}>What is Dark</p>
+        <a href="" className={styles.link}>
+          Read our wonderfully weird story
+        </a>
+        <div className={styles.boxDiv}>
+          {textarray.map((item) => {
+            return (
+              <div className={styles.box}>
+                <h3 className={styles.boxTitle}>{item.title}</h3>
+                <p className={styles.boxText}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+        <h3 className={styles.qstn}>
+          Have a question? Well, we’ve got some answers.
+        </h3>
+        <button className={styles.yellowBackgroundButton}>
+          Got to Help Center
+        </button>
+      </div>
       <div style={{ color: "black" }} className={styles.footer}>
         <div className={styles.firstDiv}>
           <p>

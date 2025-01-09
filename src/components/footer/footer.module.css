@@ -1,4 +1,75 @@
+.yellowBackground{
+    background-color: #fffbd8 !important;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+.mainQstn{
+    font-weight: 300;
+    font-size: 30px;
+    letter-spacing: 2px; 
+    line-height: 1.8; 
+    margin: 0;
+    color: #333; 
+    font-family: cursive;
+}
+.boxDiv{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
 
+.box{
+    width: 78%;
+    margin: 0 auto;
+}
+.qstn{
+    letter-spacing: 1px;
+}
+.boxTitle{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: cursive;
+}
+.yellowBackgroundButton{
+    width: auto;
+    padding: 20px;
+    border: 2px solid black;
+    color: black;
+    background-color: #fffbd8;
+    letter-spacing: 1px;
+    font-family: cursive;
+    font-weight: 900;
+    border-radius: 400px;
+}
+.yellowBackgroundButton:hover{
+    box-shadow: 0 8px 15px rgba(3, 3, 3, 0.3);
+    transform: translateY(-3px);
+}
+.yellowBackgroundButton:active{
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
+}
+.boxText{
+    height: auto;
+    padding: 0 20px 20px 20px;
+    letter-spacing: 1px ;
+}
+.link{
+    color: gray;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
 .firstDiv{
     background-color: #d7e6f2;
     height: 190px;
@@ -21,7 +92,7 @@
 }
 .firstDiv input{
     width: 300px;
-    height: 50px;
+    height: 70px;
     padding: 7px;
     background-color: white;
     border-radius: 5px;
@@ -249,7 +320,7 @@
     }
     .firstDiv input{
         width: 60%;
-        height: 45px;
+        height: 60px;
         padding: 7px;
         background-color: white;
         border-radius: 5px;
@@ -327,4 +398,25 @@
 
     }
     
+}
+@media (max-width:900px) {
+    .box:first-child{
+        margin-top: 20px;
+    }
+    .box{
+        width: 95%;
+    }
+    .boxDiv{
+        flex-direction: column;
+    }
+    boxDiv{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        width: 100%;
+        margin: 0 auto;
+    
+    }
 }
