@@ -10,7 +10,7 @@ export const Board = () => {
         />
         <img
           className={styles.imgTwo}
-          src="/public/images/online-3964531_1280.jpg"
+          src="images/online-3964531_1280.jpg"
           alt=""
         />
       </section>
