@@ -5,15 +5,18 @@ import styles from "./products.module.css";
 export const Products = () => {
   const { addToRecentlyFeaturedArray } = useCart();
   const { fetchedData } = useCart();
-  const limitedData = fetchedData?.slice(13, 19);
+  const limitedData = fetchedData?.slice(0, 13);
   const handleAddItem = (item: recentlyFeaturedDataProp) => {
     addToRecentlyFeaturedArray(item);
   };
+
   return (
     <div className={styles.container}>
       {limitedData?.map((item) => {
         const imageSrc =
-          typeof item.image === "string" ? item.image : "/fallback-image.jpg";
+          typeof item.images[0] === "string"
+            ? item.images[0]
+            : "/fallback-image.jpg";
 
         return (
           <div

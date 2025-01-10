@@ -6,7 +6,7 @@ export type APIResponse = {
   category: string;
   description: string;
   id: number;
-  image: string;
+  images: string;
   price: number;
   rating: object;
   title: string;
@@ -21,7 +21,9 @@ export const ReusableComponent = ({ data }: { data: APIResponse[] }) => {
     <div className={styles.container}>
       {data?.map((item) => {
         const imageSrc =
-          typeof item.image === "string" ? item.image : "/fallback-image.jpg";
+          typeof item.images[0] === "string"
+            ? item.images[0]
+            : "/fallback-image.jpg";
 
         return (
           <div

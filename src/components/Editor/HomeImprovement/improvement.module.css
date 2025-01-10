@@ -120,8 +120,8 @@
 
 }
 .roductCard{
-  width: 300px;
-  height: 200px;
+  width: 50%;
+  height: 250px;
   background-size: cover;
   background-position: contain;
   object-fit: cover;
@@ -194,9 +194,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     gap: 10px; 
+    margin-right: 20px;
   }
 
   .roductCard {
-    width: 100%; /* Ensure full width within its grid cell */
+    width: 100%; 
+    height: 150px;
   }
 }

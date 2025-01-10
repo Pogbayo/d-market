@@ -1,8 +1,10 @@
 import { useCart } from "../../lib/usecart";
 import styles from "./amazing.module.css";
+import { useState, useEffect } from "react";
 
 export const AmazingDeals = () => {
   const { fetchedData } = useCart();
+  const limitedData = fetchedData?.slice(1, 13);
 
   const truncateDescription = (description: string) => {
     const words = description.split(" ");
@@ -12,36 +14,70 @@ export const AmazingDeals = () => {
     return description;
   };
 
+  const parseImageUrl = (imageUrl: string) => {
+    try {
+      // Attempt to parse the URL if it's a stringified array
+      const parsed = JSON.parse(imageUrl);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed[0]; // return the first URL in the array
+      }
+      return imageUrl;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return imageUrl;
+    }
+  };
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (fetchedData && fetchedData.length > 0) {
+      setIsLoading(false);
+    }
+  }, [fetchedData]);
+
   return (
     <div className={styles.container}>
-      <h2>Amazing deals, updated daily</h2>
-      <div className={styles.productWrapper}>
-        {fetchedData?.map((item) => {
-          const slashedPrice = Number(item.price) * 2;
-          return (
-            <div key={item.id} className={styles.product}>
-              <img src={`${item.image}`} alt="" />
-              <p className={styles.desc}>
-                {typeof item.description === "string"
-                  ? truncateDescription(item.description)
-                  : ""}
-              </p>
-              <div className={styles.priceContainer}>
-                <p className={styles.price}>$ USD {item.price}</p>
-                <small className={styles.slashedPrice}>
-                  <p style={{ textDecoration: "line-through" }}>
-                    USD{slashedPrice.toFixed(2)}
+      {isLoading ? (
+        <>
+          <div className={styles.skeletonLoader}>
+            <div className={styles.shimmer}></div>
+          </div>
+        </>
+      ) : (
+        <>
+          <h2>Amazing deals, updated daily</h2>
+          <div className={styles.productWrapper}>
+            {limitedData?.map((item) => {
+              const slashedPrice = Number(item.price) * 2;
+              const imageSrc = parseImageUrl(item.images);
+
+              return (
+                <div key={item.id} className={styles.product}>
+                  <img src={imageSrc} alt="" />
+                  <p className={styles.desc}>
+                    {typeof item.description === "string"
+                      ? truncateDescription(item.description)
+                      : ""}
                   </p>
-                  <p>(65% off)</p>
-                </small>
-                <p className={styles.rating}>
-                  5.0 ★ {`$${(slashedPrice / 1.3).toFixed(2)}`}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+                  <div className={styles.priceContainer}>
+                    <p className={styles.price}>$ USD {item.price}</p>
+                    <small className={styles.slashedPrice}>
+                      <p style={{ textDecoration: "line-through" }}>
+                        USD{slashedPrice.toFixed(2)}
+                      </p>
+                      <p>(65% off)</p>
+                    </small>
+                    <p className={styles.rating}>
+                      5.0 ★ {`$${(slashedPrice / 1.3).toFixed(2)}`}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };

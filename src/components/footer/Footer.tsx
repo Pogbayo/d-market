@@ -27,7 +27,7 @@ export const Footer = () => {
         <div className={styles.boxDiv}>
           {textarray.map((item) => {
             return (
-              <div className={styles.box}>
+              <div className={styles.box} key={item.title}>
                 <h3 className={styles.boxTitle}>{item.title}</h3>
                 <p className={styles.boxText}>{item.text}</p>
               </div>

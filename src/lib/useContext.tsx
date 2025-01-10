@@ -6,7 +6,7 @@ export type APIResponse = {
   category: string;
   description: string;
   id: number;
-  image: string;
+  images: string;
   price: number;
   rating: object;
   title: string;
@@ -22,7 +22,7 @@ export type recentlyFeaturedDataProp = {
   category: string;
   description: string;
   id: number;
-  image: string;
+  images: string;
   price: number;
   rating: object;
   title: string;
@@ -92,7 +92,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const fetchData = async () => {
       try {
         const response: AxiosResponse<APIResponse[]> = await axios.get(
-          "https://fakestoreapi.com/products"
+          "https://api.escuelajs.co/api/v1/products"
         );
         setFetchedData(response.data);
         console.log("Hellow", response.data);

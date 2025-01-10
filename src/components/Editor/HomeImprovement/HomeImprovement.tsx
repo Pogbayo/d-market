@@ -4,7 +4,7 @@ import styles from "./improvement.module.css";
 export const HomeImprovement = () => {
   const { fetchedData } = useCart();
   const slicedData = fetchedData?.slice(0, 2);
-  const limitedData = fetchedData?.slice(12, 16);
+  const limitedData = fetchedData?.slice(1, 5);
   return (
     <div className={styles.container}>
       <div className={styles.upperDiv}>
@@ -22,7 +22,7 @@ export const HomeImprovement = () => {
             <div
               key={item.id}
               className={styles.productCard}
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.images})` }}
             >
               <div className={styles.priceTag}>USD {item.price}</div>
             </div>
@@ -35,7 +35,7 @@ export const HomeImprovement = () => {
             <div
               key={item.id}
               className={styles.roductCard}
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.images})` }}
             >
               <div className={styles.riceTag}>USD {item.price}</div>
             </div>

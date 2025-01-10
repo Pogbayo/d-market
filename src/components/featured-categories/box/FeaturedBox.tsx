@@ -6,6 +6,7 @@ interface FeaturedCategoriesProps {
 }
 
 export const FeaturedBox: React.FC<FeaturedCategoriesProps> = ({ data }) => {
+  const limitedData = data?.slice(0, 13);
   const truncateDescription = (description: string) => {
     const words = description.split(" ");
     if (words.length > 3) {
@@ -17,11 +18,11 @@ export const FeaturedBox: React.FC<FeaturedCategoriesProps> = ({ data }) => {
     <div className={styles.container}>
       <h2>Featured Categories</h2>
       <div className={styles.productWrapper}>
-        {data?.map((item) => {
+        {limitedData?.map((item) => {
           const slashedPrice = Number(item.price) * 2;
           return (
             <div key={item.id} className={styles.product}>
-              <img src={`${item.image}`} alt="" />
+              <img src={`${item.images}`} alt="" />
               <p className={styles.desc}>
                 {typeof item.description === "string"
                   ? truncateDescription(item.description)
