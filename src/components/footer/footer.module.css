@@ -318,6 +318,9 @@
     .subscribe{
         width: 80%;
     }
+    .firstDiv{
+        padding: 10px;
+    }
     .firstDiv input{
         width: 60%;
         height: 60px;
@@ -417,6 +420,11 @@
         margin-top: 20px;
         width: 100%;
         margin: 0 auto;
-    
+    }
+}
+
+@media (max-width:500px){
+    .yellowBackground{
+        padding-top: 20px;
     }
 }

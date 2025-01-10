@@ -1,13 +1,18 @@
 .sec{
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
+  width: 85%;
+  margin: 0 auto;
+  border: 2px solid red;
+  padding: 20px;
+
 }
 .container {
     display: flex;
-    margin: 10px auto 0 auto;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
+    border: 2px solid red;
     flex-wrap: wrap;     
     height: 400px;
     overflow: hidden;
@@ -37,7 +42,6 @@
   }
   .threeDivsContainer{
     display: flex;
-    margin-left: 50px;
     gap: 4px;   
     width: 60%;
     flex-direction: column;
@@ -91,6 +95,11 @@
     display:flex;
   }
   
+  @media (max-width: 1400px) {
+    .sec{
+      width: 97%;
+    }
+  }
   @media (max-width: 500px) {
     .container{
         flex-direction: column; 

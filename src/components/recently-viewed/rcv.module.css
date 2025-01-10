@@ -1,9 +1,9 @@
 .container {
   margin: 0 auto;
-  width: 75%;
+  width: 85%;
+  border: 2px solid red;
   padding: 0 ;
 }
-
 .title{
     display: flex;
     justify-content: space-between;
@@ -23,9 +23,9 @@
     color: gray;
     margin: 3px;
 }
-@media (max-width:1700px){
+@media (max-width:1400px){
    .container{
-    width: 95%;
+    width: 97%;
    }
 }
 

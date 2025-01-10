@@ -4,8 +4,10 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 20px;
-    width: 75%;
+    width: 85%;
     position: relative;
+    border: 2px solid red;
+
   }
   
   .container h2 {
@@ -106,7 +108,7 @@
   
   @media (max-width: 1400px) {
     .container {
-      width: 96%;
+      width: 100%;
     }
   }
   
@@ -131,6 +133,16 @@
   @media (max-width: 576px) {
     .product {
       max-width: 170px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
+     
+  .slashedPrice {
+    display: flex;
+    color: gray;
+    margin: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
   }
   
