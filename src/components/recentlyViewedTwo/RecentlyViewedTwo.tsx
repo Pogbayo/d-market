@@ -3,7 +3,7 @@ import { useCart } from "../../lib/usecart";
 import styles from "./recentlyviewedtwo.module.css";
 
 export const RecentlyViewedTwo = () => {
-  const { fetchedData } = useCart();
+  const { fetchedData, recentlyFeaturedData } = useCart();
   const slicedData = fetchedData?.slice(0, 4) || [];
   const lastDataImageUrl =
     fetchedData && fetchedData[19] ? fetchedData[19].image : null;
@@ -14,7 +14,7 @@ export const RecentlyViewedTwo = () => {
         <div className={styles.threeDivsContainer}>
           <p>Because you recently viewed</p>
           <div>
-            <img
+            {/* <img
               className={fetchedData ? styles.img : styles.shimmer}
               src={`${lastDataImageUrl}`}
               alt=""
@@ -33,7 +33,16 @@ export const RecentlyViewedTwo = () => {
               className={fetchedData ? styles.img : styles.shimmer}
               src={`${lastDataImageUrl}`}
               alt=""
-            />
+            /> */}
+            {recentlyFeaturedData.map((item) => {
+              return (
+                <img
+                  className={fetchedData ? styles.img : styles.shimmer}
+                  src={item.image}
+                  alt=""
+                />
+              );
+            })}
           </div>
         </div>
         <div className={styles.container}>

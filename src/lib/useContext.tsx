@@ -14,7 +14,15 @@ type cartItem = {
   price: number;
   quantity: number;
 };
-
+type recentlyFeaturedDataProp = {
+  category: string;
+  descriptipn: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: object;
+  title: string;
+};
 type CartContextType = {
   items: cartItem[];
   name: string;
@@ -23,6 +31,8 @@ type CartContextType = {
   removeItem: (id: string) => void;
   clearCart: () => void;
   fetchedData: APIResponse[] | null;
+  recentlyFeaturedData: recentlyFeaturedDataProp[] | [];
+  addToRecentlyFeaturedArray: (item: recentlyFeaturedDataProp) => void;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -38,6 +48,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<cartItem[]>([]);
   const [name, setName] = useState<string>("Adebayo");
   const [fetchedData, setFetchedData] = useState<APIResponse[] | []>([]); // State to store API response
+  const [recentlyFeaturedData, setrecentlyFeaturedData] = useState<
+    recentlyFeaturedDataProp[] | []
+  >([]);
+
+  const addToRecentlyFeaturedArray = (item: recentlyFeaturedDataProp) => {
+    setrecentlyFeaturedData((prevItems) => {
+      const existingItem = prevItems.find((i) => i.id === item.id);
+      if (existingItem) {
+        return prevItems;
+      } else {
+        return [...prevItems, item];
+      }
+    });
+  };
 
   const addItem = (item: cartItem) => {
     setItems((prevItems) => {
@@ -67,7 +91,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           "https://fakestoreapi.com/products"
         );
         setFetchedData(response.data);
-        // console.log("Hellow", response.data);
+        console.log("Hellow", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -86,6 +110,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         clearCart,
         setName,
         fetchedData,
+        recentlyFeaturedData,
+        addToRecentlyFeaturedArray,
       }}
     >
       {children}
