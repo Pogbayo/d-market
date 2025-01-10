@@ -14,30 +14,10 @@ export const RecentlyViewedTwo = () => {
         <div className={styles.threeDivsContainer}>
           <p>Because you recently viewed</p>
           <div>
-            {/* <img
-              className={fetchedData ? styles.img : styles.shimmer}
-              src={`${lastDataImageUrl}`}
-              alt=""
-            />
-            <img
-              className={fetchedData ? styles.img : styles.shimmer}
-              src={`${lastDataImageUrl}`}
-              alt=""
-            />
-            <img
-              className={fetchedData ? styles.img : styles.shimmer}
-              src={`${lastDataImageUrl}`}
-              alt=""
-            />
-            <img
-              className={fetchedData ? styles.img : styles.shimmer}
-              src={`${lastDataImageUrl}`}
-              alt=""
-            /> */}
             {recentlyFeaturedData.map((item) => {
               return (
                 <img
-                  className={fetchedData ? styles.img : styles.shimmer}
+                  className={recentlyFeaturedData ? styles.img : styles.shimmer}
                   src={item.image}
                   alt=""
                 />

@@ -3,9 +3,13 @@ import { ReactNode } from "react";
 import axios, { AxiosResponse } from "axios";
 
 export type APIResponse = {
-  id?: number;
-  name?: string;
-  [key: string]: ReactNode;
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: object;
+  title: string;
 };
 
 type cartItem = {
@@ -14,9 +18,9 @@ type cartItem = {
   price: number;
   quantity: number;
 };
-type recentlyFeaturedDataProp = {
+export type recentlyFeaturedDataProp = {
   category: string;
-  descriptipn: string;
+  description: string;
   id: number;
   image: string;
   price: number;
