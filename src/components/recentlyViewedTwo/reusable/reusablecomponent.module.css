@@ -127,7 +127,8 @@
   .container {
     width: 100%;
     grid-template-columns: repeat(2, 1fr); /* Show two columns */
-    gap: 3px;
+    margin: 0;
+    gap: 10px;
     padding: 3px;
   }
 
@@ -139,7 +140,7 @@
   .product {
     padding: 12px; 
     font-size: 14px; 
-    height: 130px; /* Adjust height for smaller screens */
+    height: 160px; /* Adjust height for smaller screens */
     border-radius: 10px; 
   }
 }

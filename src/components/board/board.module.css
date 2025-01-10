@@ -114,3 +114,17 @@
      }
    
 }
+@media (max-width:500px){
+    .container{
+        width: 100%;
+    }
+    .imgOne{
+        width: 96%;
+        height: 350px;
+    }
+    .shopNow{
+        bottom: 70px;
+        left: 30%;
+        color: red;
+     }
+}

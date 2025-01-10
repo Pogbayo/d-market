@@ -130,6 +130,9 @@
   }
   
   @media (max-width: 576px) {
+    .container{
+      padding: 0;
+    }
     .product {
       max-width: 170px;
       margin-left: 10px;

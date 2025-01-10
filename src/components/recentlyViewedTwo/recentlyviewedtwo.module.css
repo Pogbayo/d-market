@@ -98,20 +98,30 @@
       width: 97%;
     }
   }
+  
   @media (max-width: 500px) {
     .container{
         flex-direction: column; 
         align-items: center; 
-        height: 900px;
-        gap: 2px;
+        height: 700px;
+        gap: 20px;
         width: 100%;
         justify-content: center;
         padding: 3px;
     }
-    .divOne{
-        width: 95%;
+    .divOne {
+      flex: 0 0 39%;  
+      width: 95%;
+      height: 10px;
+      overflow: hidden; /* Ensures content does not overflow */
     }
     .divTwo {
         width: 95%;
+
+    }
+    .sec{
+      width: 100%;
+      gap: 0;
+      padding: 0;
     }
   }
