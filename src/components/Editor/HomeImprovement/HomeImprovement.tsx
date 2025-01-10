@@ -4,7 +4,7 @@ import styles from "./improvement.module.css";
 export const HomeImprovement = () => {
   const { fetchedData } = useCart();
   const slicedData = fetchedData?.slice(0, 2);
-  const limitedData = fetchedData?.slice(4, 8);
+  const limitedData = fetchedData?.slice(12, 16);
   return (
     <div className={styles.container}>
       <div className={styles.upperDiv}>

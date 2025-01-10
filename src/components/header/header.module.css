@@ -118,7 +118,6 @@
       align-items: center;
       width: 100%;
       margin-top: 0;
-
     }
     .searchDiv{
         width: 99%;
@@ -145,4 +144,16 @@
         display: none;
     }
   }
-  
+  @media (max-width: 500px) {
+   .searchInput{
+    width: 100%;
+   }
+   .catSearchDiv {
+    order: 2; 
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+  }
