@@ -29,8 +29,8 @@ export const Home = () => {
               </>
             }
           />
+          <Route path={"viewProduct"} element={<Modal />} />
         </Layout>
-        <Route path={"viewProduct"} element={<Modal />} />
       </Routes>
     </Router>
   );
