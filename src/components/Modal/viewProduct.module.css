@@ -98,7 +98,7 @@
 
   .sideBar {
     width: auto;
-    margin-bottom: 10px;
+    margin-top: 5px;
     display: flex;
     overflow-x: auto;
     padding: 10px 0;
@@ -124,7 +124,7 @@
   }
 
   .mainImage {
-    max-width: 70%;
+    max-width: 350px;
     height: 500px;
   }
 
