@@ -50,7 +50,7 @@ export const AmazingDeals = () => {
           <div className={styles.productWrapper}>
             {limitedData?.map((item) => {
               const slashedPrice = Number(item.price) * 2;
-              const imageSrc = parseImageUrl(item.images);
+              const imageSrc = parseImageUrl(item.images[0]);
 
               return (
                 <div key={item.id} className={styles.product}>
