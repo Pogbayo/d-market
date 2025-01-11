@@ -8,7 +8,7 @@ import { AmazingDeals } from "../amazing-deals/AmazingDeals";
 import { FeaturedCategories } from "../featured-categories/FeaturedCategories";
 import { Editor } from "../Editor/Editor";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Modal } from "../viewProducts/ViewProduct";
+import { Viewedproduct } from "../viewProducts/ViewProduct";
 
 export const Home = () => {
   return (
@@ -29,7 +29,7 @@ export const Home = () => {
               </>
             }
           />
-          <Route path={"viewProduct"} element={<Modal />} />
+          <Route path={"viewProduct"} element={<Viewedproduct />} />
         </Routes>
       </Layout>
     </Router>

@@ -2,6 +2,8 @@ import { useCart } from "../../lib/usecart";
 import styles from "./viewProduct.module.css";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import { AmazingDeals } from "../amazing-deals/AmazingDeals";
+import { Editor } from "../Editor/Editor";
 
 export const Viewedproduct = () => {
   const { selectedItem, showModal, recentlyFeaturedData, openModal } =
@@ -73,6 +75,8 @@ export const Viewedproduct = () => {
           </div>
         </div>
       </div>
+      <AmazingDeals />
+      <Editor />
     </div>
   );
 };
