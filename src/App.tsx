@@ -1,5 +1,5 @@
 import { Home } from "./components/Home/Home";
-import { CartProvider } from "./lib/useContext"; // Import CartProvider from the correct path
+import { CartProvider } from "./lib/useContext";
 
 export const App = () => {
   return (

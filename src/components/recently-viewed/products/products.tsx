@@ -30,7 +30,7 @@ export const Products = () => {
             className={styles.product}
             style={{ backgroundImage: `url(${imageSrc})` }}
           >
-            <p>USD {item.price}</p>
+            <p>USD x{item.price}</p>
           </div>
         );
       })}
