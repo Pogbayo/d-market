@@ -48,8 +48,8 @@
 }
 
 .mainImage {
-  max-width: 100%;
-  height: auto;
+  max-width: 70%;
+  height: 400px;
   border-radius: 10px;
 }
 
@@ -124,8 +124,8 @@
   }
 
   .mainImage {
-    max-width: 100%;
-    height: auto;
+    max-width: 70%;
+    height: 500px;
   }
 
   .categoryDiv {

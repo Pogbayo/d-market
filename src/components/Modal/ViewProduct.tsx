@@ -1,7 +1,8 @@
 import { useCart } from "../../lib/usecart";
 import styles from "./viewProduct.module.css";
 export const Modal = () => {
-  const { selectedItem, showModal, recentlyFeaturedData } = useCart();
+  const { selectedItem, showModal, recentlyFeaturedData, openModal } =
+    useCart();
 
   if (!showModal || !selectedItem) return null;
   return (
@@ -11,7 +12,11 @@ export const Modal = () => {
           return (
             <>
               <div className={styles.box}>
-                <img src={item.images[0]} className={styles.boxImage} />
+                <img
+                  src={item.images[0]}
+                  className={styles.boxImage}
+                  onClick={() => openModal(item)}
+                />
               </div>
             </>
           );
