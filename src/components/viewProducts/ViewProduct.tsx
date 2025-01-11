@@ -67,7 +67,7 @@ export const Viewedproduct = () => {
             <div className={styles.addToCart}>
               <div className={styles.quantityControl}>
                 <button className={styles.decreaseBtn}>-</button>
-                <span className={styles.quantity}>1</span>
+                <span className={styles.quantity}>0</span>
                 <button className={styles.increaseBtn}>+</button>
               </div>
               <button className={styles.cartButton}>Add to Cart</button>
