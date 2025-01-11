@@ -3,6 +3,7 @@ import { Discover } from "../discover/Discover";
 import { Layout } from "../layout/Layout";
 import RCV from "../recently-viewed/RCV";
 import { RecentlyViewedTwo } from "../recentlyViewedTwo/RecentlyViewedTwo";
+// import styles from "./home.module.css";
 import { AmazingDeals } from "../amazing-deals/AmazingDeals";
 import { FeaturedCategories } from "../featured-categories/FeaturedCategories";
 import { Editor } from "../Editor/Editor";
@@ -11,12 +12,12 @@ import { Modal } from "../Modal/ViewProduct";
 
 export const Home = () => {
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
+    <Layout>
+      <Router>
+        <Routes>
+          <Route
+            path={"/"}
+            element={
               <>
                 <Board />
                 <RCV />
@@ -26,12 +27,11 @@ export const Home = () => {
                 <Editor />
                 <FeaturedCategories />
               </>
-            </Layout>
-          }
-        />
-        {/* Route without Layout */}
-        <Route path="viewProduct" element={<Modal />} />
-      </Routes>
-    </Router>
+            }
+          />
+          <Route path={"viewProduct"} element={<Modal />} />
+        </Routes>
+      </Router>
+    </Layout>
   );
 };
