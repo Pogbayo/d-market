@@ -84,7 +84,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const openModal = (item: Item) => {
-    console.log("Opening modal with item:", item);
     setSelectedItem(item);
     setShowModal(true);
   };
@@ -132,7 +131,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           "https://api.escuelajs.co/api/v1/products"
         );
         setFetchedData(response.data);
-        console.log("Hellow", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

@@ -7,7 +7,7 @@ export const RecentlyViewedTwo = () => {
   const { fetchedData, recentlyFeaturedData, openModal } = useCart();
   const slicedData = fetchedData?.slice(1, 5) || [];
   const lastDataImageUrl =
-    fetchedData && fetchedData[19] ? fetchedData[1].images[1] : null;
+    fetchedData && fetchedData[10] ? fetchedData[40].images[1] : null;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

@@ -1,32 +1,48 @@
 import { useCart } from "../../lib/usecart";
 import styles from "./viewProduct.module.css";
-export const Modal = () => {
+import { MdNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
+
+export const Viewedproduct = () => {
   const { selectedItem, showModal, recentlyFeaturedData, openModal } =
     useCart();
 
   if (!showModal || !selectedItem) return null;
+
   return (
     <div className={styles.container}>
       <div className={styles.sideBar}>
-        {recentlyFeaturedData.map((item) => {
-          return (
-            <>
-              <div className={styles.box}>
-                <img
-                  src={item.images[0]}
-                  className={styles.boxImage}
-                  onClick={() => openModal(item)}
-                />
-              </div>
-            </>
-          );
-        })}
+        {recentlyFeaturedData.map((item) => (
+          <div className={styles.box} key={item.id}>
+            <img
+              src={item.images[0]}
+              className={styles.boxImage}
+              onClick={() => openModal(item)}
+              alt="Product Thumbnail"
+            />
+          </div>
+        ))}
       </div>
 
       <div className={styles.productDiv}>
         <h2 className={styles.Title}>{selectedItem.title}</h2>
         <div className={styles.productDetailDiv}>
-          <img src={selectedItem.images[0]} className={styles.mainImage} />
+          <div className={styles.mainImageContainer}>
+            <GrFormPrevious
+              size={50}
+              className={`${styles.logo} ${styles.prevLogo}`}
+            />
+            <img
+              src={selectedItem.images[0]}
+              className={styles.mainImage}
+              alt="Selected Product"
+            />
+            <MdNavigateNext
+              size={50}
+              className={`${styles.logo} ${styles.nextLogo}`}
+            />
+          </div>
+
           <div className={styles.categoryDiv}>
             <h3 className={styles.productTitle}>{selectedItem.title}</h3>
             <p className={styles.Description}>
@@ -44,14 +60,6 @@ export const Modal = () => {
                 <li>Available in multiple sizes</li>
                 <li>Eco-friendly packaging</li>
               </ul>
-            </div>
-
-            <div className={styles.Category}>
-              <h4>Category</h4>
-              <p className={styles.categoryName}>
-                {selectedItem.category.name || "Electronics"}
-              </p>
-              <p>Category ID: {selectedItem.category.id || "12345"}</p>
             </div>
 
             <div className={styles.addToCart}>

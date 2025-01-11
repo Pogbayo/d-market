@@ -8,7 +8,7 @@ import { AmazingDeals } from "../amazing-deals/AmazingDeals";
 import { FeaturedCategories } from "../featured-categories/FeaturedCategories";
 import { Editor } from "../Editor/Editor";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Modal } from "../Modal/ViewProduct";
+import { Modal } from "../viewProducts/ViewProduct";
 
 export const Home = () => {
   return (
