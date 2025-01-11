@@ -1,8 +1,11 @@
 import styles from "./footer.module.css";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsGlobeAmericas } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
 
 export const Footer = () => {
+  const location = useLocation(); // Get the current location
+
   const textarray = [
     {
       title: "A community doing good",
@@ -19,28 +22,29 @@ export const Footer = () => {
   ];
   return (
     <div>
-      <div className={styles.yellowBackground}>
-        <p className={styles.mainQstn}>What is Dark</p>
-        <a href="" className={styles.link}>
-          Read our wonderfully weird story
-        </a>
-        <div className={styles.boxDiv}>
-          {textarray.map((item) => {
-            return (
+      {location.pathname === "/" && (
+        <div className={styles.yellowBackground}>
+          <p className={styles.mainQstn}>What is Dark</p>
+          <a href="" className={styles.link}>
+            Read our wonderfully weird story
+          </a>
+          <div className={styles.boxDiv}>
+            {textarray.map((item) => (
               <div className={styles.box} key={item.title}>
                 <h3 className={styles.boxTitle}>{item.title}</h3>
                 <p className={styles.boxText}>{item.text}</p>
               </div>
-            );
-          })}
+            ))}
+          </div>
+          <h3 className={styles.qstn}>
+            Have a question? Well, we’ve got some answers.
+          </h3>
+          <button className={styles.yellowBackgroundButton}>
+            Got to Help Center
+          </button>
         </div>
-        <h3 className={styles.qstn}>
-          Have a question? Well, we’ve got some answers.
-        </h3>
-        <button className={styles.yellowBackgroundButton}>
-          Got to Help Center
-        </button>
-      </div>
+      )}
+
       <div style={{ color: "black" }} className={styles.footer}>
         <div className={styles.firstDiv}>
           <p>

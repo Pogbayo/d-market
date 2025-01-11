@@ -12,8 +12,8 @@ import { Modal } from "../Modal/ViewProduct";
 
 export const Home = () => {
   return (
-    <Layout>
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
           <Route
             path={"/"}
@@ -31,7 +31,7 @@ export const Home = () => {
           />
           <Route path={"viewProduct"} element={<Modal />} />
         </Routes>
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 };
