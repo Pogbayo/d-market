@@ -13,7 +13,6 @@ export const Home = () => {
   return (
     <Router>
       <Routes>
-        {/* Routes wrapped with Layout */}
         <Route
           path="/"
           element={
