@@ -1,16 +1,7 @@
 // import { ReactNode } from "react";
 import styles from "./reusablecomponent.module.css";
 import { useCart } from "../../../lib/usecart";
-import { recentlyFeaturedDataProp } from "../../../lib/useContext";
-export type APIResponse = {
-  category: string;
-  description: string;
-  id: number;
-  images: string;
-  price: number;
-  rating: object;
-  title: string;
-};
+import { APIResponse, recentlyFeaturedDataProp } from "../../../lib/useContext";
 
 export const ReusableComponent = ({ data }: { data: APIResponse[] }) => {
   const { addToRecentlyFeaturedArray } = useCart();

@@ -3,13 +3,16 @@ import { ReactNode } from "react";
 import axios, { AxiosResponse } from "axios";
 
 export type APIResponse = {
-  category: string;
-  description: string;
-  id: number;
-  images: string;
-  price: number;
-  rating: object;
+  id: string;
   title: string;
+  description: string;
+  price: number;
+  images: string[];
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
 };
 
 type cartItem = {
@@ -19,13 +22,28 @@ type cartItem = {
   quantity: number;
 };
 export type recentlyFeaturedDataProp = {
-  category: string;
-  description: string;
-  id: number;
-  images: string;
-  price: number;
-  rating: object;
+  id: string;
   title: string;
+  description: string;
+  price: number;
+  images: string[];
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
+};
+export type Item = {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  images: string[];
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
 };
 type CartContextType = {
   items: cartItem[];
@@ -37,6 +55,12 @@ type CartContextType = {
   fetchedData: APIResponse[] | null;
   recentlyFeaturedData: recentlyFeaturedDataProp[] | [];
   addToRecentlyFeaturedArray: (item: recentlyFeaturedDataProp) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  selectedItem: Item | null;
+  showModal: boolean;
+  openModal: (item: Item) => void;
+  closeModal: () => void;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -55,7 +79,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [recentlyFeaturedData, setrecentlyFeaturedData] = useState<
     recentlyFeaturedDataProp[] | []
   >([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
+  const openModal = (item: Item) => {
+    console.log("Opening modal with item:", item);
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedItem(null);
+  };
   const addToRecentlyFeaturedArray = (item: recentlyFeaturedDataProp) => {
     setrecentlyFeaturedData((prevItems) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
@@ -116,6 +153,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         fetchedData,
         recentlyFeaturedData,
         addToRecentlyFeaturedArray,
+        searchQuery,
+        setSearchQuery,
+        selectedItem,
+        showModal,
+        openModal,
+        closeModal,
       }}
     >
       {children}

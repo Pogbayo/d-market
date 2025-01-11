@@ -1,9 +1,49 @@
+import { useState, useEffect } from "react";
 import { LuGift } from "react-icons/lu";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaOpencart } from "react-icons/fa";
 import styles from "./header.module.css";
+import { useCart } from "../../lib/usecart";
+
 export const Header = () => {
+  const { searchQuery, setSearchQuery, fetchedData } = useCart();
+  const [showResults, setShowResults] = useState(false);
+
+  // Filter the fetchedData based on the searchQuery
+  const filteredData = fetchedData?.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Hide the result box when clicking outside
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      event.target &&
+      !(event.target as Element).closest(`.${styles.searchDiv}`) &&
+      event.target &&
+      !(event.target as Element).closest(`.${styles.resultsBox}`)
+    ) {
+      setShowResults(false); // Close the result box if clicked outside
+    }
+  };
+
+  useEffect(() => {
+    if (searchQuery) {
+      setShowResults(true); // Show results when there's a search query
+    } else {
+      setShowResults(false); // Hide results when there's no query
+    }
+
+    // Add event listener for clicks outside the search area
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside); // Clean up the event listener
+    };
+  }, [searchQuery]);
+
   return (
     <div>
       <div className={styles.oga}>
@@ -18,9 +58,32 @@ export const Header = () => {
                 <input
                   type="text"
                   className={styles.searchInput}
-                  placeholder="Search for anything"
+                  placeholder="search for anything..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <span className={styles.searchIcon}></span>
+
+                {/* Display the search results dropdown if searchQuery is not empty */}
+                {showResults &&
+                  searchQuery &&
+                  (filteredData ?? []).length > 0 && (
+                    <div className={styles.resultsBox}>
+                      {filteredData?.map((item) => (
+                        <div key={item.id} className={styles.resultItem}>
+                          <p>{item.title}</p>
+                          {/* <p>{item.price} USD</p> */}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                {showResults &&
+                  searchQuery &&
+                  (filteredData ?? []).length === 0 && (
+                    <div className={styles.resultsBox}>
+                      <p className={styles.noResults}>No results found</p>
+                    </div>
+                  )}
               </div>
             </div>
             <div className={styles.iconsDiv}>

@@ -7,19 +7,31 @@ import { RecentlyViewedTwo } from "../recentlyViewedTwo/RecentlyViewedTwo";
 import { AmazingDeals } from "../amazing-deals/AmazingDeals";
 import { FeaturedCategories } from "../featured-categories/FeaturedCategories";
 import { Editor } from "../Editor/Editor";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Modal } from "../Modal/ViewProduct";
 
 export const Home = () => {
   return (
     <Layout>
-      <Board />
-      <>
-        <RCV />
-        <Discover />
-        <RecentlyViewedTwo />
-        <AmazingDeals />
-        <Editor />
-        <FeaturedCategories />
-      </>
+      <Router>
+        <Routes>
+          <Route
+            path={"/"}
+            element={
+              <>
+                <Board />
+                <RCV />
+                <Discover />
+                <RecentlyViewedTwo />
+                <AmazingDeals />
+                <Editor />
+                <FeaturedCategories />
+              </>
+            }
+          />
+          <Route path={"viewProduct"} element={<Modal />} />
+        </Routes>
+      </Router>
     </Layout>
   );
 };
