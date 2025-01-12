@@ -76,7 +76,7 @@
     max-width: 300px;
     flex: 0 0 auto;
     border-radius: 20px;
-    height: 250px;
+    height: auto;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -147,7 +147,7 @@
   
   @media (max-width: 1200px) {
     .product {
-      max-width: 260px;
+      width: 300px;
     }
   }
   

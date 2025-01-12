@@ -4,10 +4,20 @@ import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { AmazingDeals } from "../amazing-deals/AmazingDeals";
 import { Editor } from "../Editor/Editor";
+import { Suggestion } from "../suggestion/Suggestion";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Viewedproduct = () => {
   const { selectedItem, showModal, recentlyFeaturedData, openModal } =
     useCart();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!selectedItem) {
+      navigate("/");
+    }
+  }, [selectedItem, navigate]);
 
   if (!showModal || !selectedItem) return null;
 
@@ -72,6 +82,7 @@ export const Viewedproduct = () => {
       </div>
       <AmazingDeals />
       <Editor />
+      <Suggestion />
     </div>
   );
 };

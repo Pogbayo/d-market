@@ -73,10 +73,10 @@
     
     .product {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      max-width: 300px;
+      width: 300px;
       flex: 0 0 auto;
       border-radius: 20px;
-      height: 250px;
+      height: auto;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -169,7 +169,7 @@
         padding: 0;
       }
       .product {
-        max-width: 190px;
+        /* max-width: 190px; */
         margin-left: 10px;
         margin-right: 10px;
       }

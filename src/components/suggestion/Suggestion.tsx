@@ -1,5 +1,5 @@
 import { useCart } from "../../lib/usecart";
-import styles from "./amazing.module.css";
+import styles from "./suggestion.module.css";
 import { useState, useEffect } from "react";
 
 export const Suggestion = () => {
@@ -55,7 +55,7 @@ export const Suggestion = () => {
                 <div key={item.id} className={styles.product}>
                   <img src={imageSrc} alt="" className={styles.imagesrc} />
                   <p className={styles.desc}>
-                    {typeof item.description === "string"
+                    {typeof item.category === "string"
                       ? truncateDescription(item.description)
                       : ""}
                   </p>

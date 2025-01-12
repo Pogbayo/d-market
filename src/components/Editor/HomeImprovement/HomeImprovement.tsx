@@ -3,8 +3,8 @@ import styles from "./improvement.module.css";
 
 export const HomeImprovement = () => {
   const { fetchedData } = useCart();
-  const slicedData = fetchedData?.slice(0, 2);
-  const limitedData = fetchedData?.slice(1, 5);
+  const slicedData = fetchedData?.slice(5, 7);
+  const limitedData = fetchedData?.slice(5, 9);
   return (
     <div className={styles.container}>
       <div className={styles.upperDiv}>

@@ -35,12 +35,12 @@
   color: black; 
   font-size: 15px; 
   margin: 0;
-  width: 70px;
-  height: auto;
+  width: auto;
+  height: 30px;
   background-color: white;
-  padding: 3px;
+  padding: 6px;
   border-radius: 30px;
-  border: 1px solid black;
+  border: 1px solid gray;
 }
 
 .product:hover {
@@ -135,7 +135,9 @@
 
   .product p {
     font-size: 10px;
-    padding: 1px;
+    height: auto;
+    padding: 5px;
+    border-radius: 10px;
   }
 
   .product {

@@ -10,6 +10,7 @@ import { Editor } from "../Editor/Editor";
 import { Routes, Route } from "react-router-dom";
 import { Viewedproduct } from "../viewProducts/ViewProduct";
 import { useCart } from "../../lib/usecart";
+import { Suggestion } from "../suggestion/Suggestion";
 
 export const Home = () => {
   const { isLoading } = useCart();
@@ -46,7 +47,7 @@ export const Home = () => {
           </div>
         </div>
       )}
-      <div className={`${isLoading ? styles.blurred : ""}`}>
+      <div className={`${isLoading ? styles.blurred : styles.container}`}>
         <Routes>
           <Route
             path="/"
@@ -59,6 +60,7 @@ export const Home = () => {
                 <AmazingDeals />
                 <Editor />
                 <FeaturedCategories />
+                <Suggestion />
               </>
             }
           />

@@ -2,14 +2,19 @@ import { ReusableComponent } from "./reusable/ReusableSquareComponent";
 import { useCart } from "../../lib/usecart";
 import styles from "./recentlyviewedtwo.module.css";
 import { useState, useEffect } from "react";
+import { APIResponse } from "../../lib/useContext";
 
 export const RecentlyViewedTwo = () => {
-  const { fetchedData, recentlyFeaturedData, openModal } = useCart();
+  const { fetchedData, recentlyFeaturedData, openModal, handleAddItem } =
+    useCart();
   const slicedData = fetchedData?.slice(1, 5) || [];
   const lastDataImageUrl =
     fetchedData && fetchedData[10] ? fetchedData[40].images[1] : null;
   const [isLoading, setIsLoading] = useState(true);
-
+  const handleItemClick = (item: APIResponse) => {
+    openModal(item);
+    handleAddItem(item);
+  };
   useEffect(() => {
     if (fetchedData && fetchedData.length > 0) {
       setTimeout(() => {
@@ -38,7 +43,7 @@ export const RecentlyViewedTwo = () => {
                       className={
                         recentlyFeaturedData ? styles.img : styles.shimmer
                       }
-                      onClick={() => openModal(item)}
+                      onClick={() => handleItemClick(item)}
                       src={item.images[0]}
                       alt=""
                       key={item.id}

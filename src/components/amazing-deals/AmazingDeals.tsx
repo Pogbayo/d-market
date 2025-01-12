@@ -1,9 +1,8 @@
 import { useCart } from "../../lib/usecart";
 import styles from "./amazing.module.css";
-import { useState, useEffect } from "react";
 
 export const AmazingDeals = () => {
-  const { fetchedData } = useCart();
+  const { fetchedData, handleAddItem } = useCart();
   const limitedData = fetchedData?.slice(10, 23);
 
   const truncateDescription = (description: string) => {
@@ -27,56 +26,42 @@ export const AmazingDeals = () => {
     }
   };
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (fetchedData && fetchedData.length > 0) {
-      setIsLoading(false);
-    }
-  }, [fetchedData]);
-
   return (
     <div className={styles.container}>
-      {isLoading ? (
-        <>
-          <div className={styles.skeletonLoader}>
-            <div className={styles.shimmer}></div>
-          </div>
-        </>
-      ) : (
-        <>
-          <h2>Amazing deals, updated daily</h2>
-          <div className={styles.productWrapper}>
-            {limitedData?.map((item) => {
-              const slashedPrice = Number(item.price) * 2;
-              const imageSrc = parseImageUrl(item.images[0]);
+      <h2>Amazing deals, updated daily</h2>
+      <div className={styles.productWrapper}>
+        {limitedData?.map((item) => {
+          const slashedPrice = Number(item.price) * 2;
+          const imageSrc = parseImageUrl(item.images[0]);
 
-              return (
-                <div key={item.id} className={styles.product}>
-                  <img src={imageSrc} alt="" className={styles.imagesrc} />
-                  <p className={styles.desc}>
-                    {typeof item.description === "string"
-                      ? truncateDescription(item.description)
-                      : ""}
+          return (
+            <div
+              key={item.id}
+              className={styles.product}
+              onClick={() => handleAddItem(item)}
+            >
+              <img src={imageSrc} alt="" className={styles.imagesrc} />
+              <p className={styles.desc}>
+                {typeof item.description === "string"
+                  ? truncateDescription(item.description)
+                  : ""}
+              </p>
+              <div className={styles.priceContainer}>
+                <p className={styles.price}>$ USD {item.price}</p>
+                <small className={styles.slashedPrice}>
+                  <p style={{ textDecoration: "line-through" }}>
+                    USD{slashedPrice.toFixed(2)}
                   </p>
-                  <div className={styles.priceContainer}>
-                    <p className={styles.price}>$ USD {item.price}</p>
-                    <small className={styles.slashedPrice}>
-                      <p style={{ textDecoration: "line-through" }}>
-                        USD{slashedPrice.toFixed(2)}
-                      </p>
-                      <p>(65% off)</p>
-                    </small>
-                    <p className={styles.rating}>
-                      5.0 ★ {`$${(slashedPrice / 1.3).toFixed(2)}`}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </>
-      )}
+                  <p>(65% off)</p>
+                </small>
+                <p className={styles.rating}>
+                  5.0 ★ {`$${(slashedPrice / 1.3).toFixed(2)}`}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

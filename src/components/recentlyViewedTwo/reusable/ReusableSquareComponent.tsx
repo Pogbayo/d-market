@@ -1,13 +1,11 @@
 // import { ReactNode } from "react";
 import styles from "./reusablecomponent.module.css";
 import { useCart } from "../../../lib/usecart";
-import { APIResponse, recentlyFeaturedDataProp } from "../../../lib/useContext";
+import { APIResponse } from "../../../lib/useContext";
 
 export const ReusableComponent = ({ data }: { data: APIResponse[] }) => {
-  const { addToRecentlyFeaturedArray } = useCart();
-  const handleAddItem = (item: recentlyFeaturedDataProp) => {
-    addToRecentlyFeaturedArray(item);
-  };
+  const { handleAddItem } = useCart();
+
   return (
     <div className={styles.container}>
       {data?.map((item) => {

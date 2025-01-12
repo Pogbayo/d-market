@@ -64,6 +64,7 @@ type CartContextType = {
   closeModal: () => void;
   isLoading: boolean;
   handleProductClick: (item: recentlyFeaturedDataProp) => void;
+  handleAddItem: (item: recentlyFeaturedDataProp) => void;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -115,6 +116,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       navigate("viewProduct");
       openModal(item);
     }, 2000);
+  };
+  const handleAddItem = (item: recentlyFeaturedDataProp) => {
+    addToRecentlyFeaturedArray(item);
+    handleProductClick(item);
   };
 
   const addItem = (item: cartItem) => {
@@ -175,6 +180,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         closeModal,
         isLoading,
         handleProductClick,
+        handleAddItem,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { useCart } from "../../../lib/usecart";
 import styles from "./roundedShape.module.css";
 
 export const RoundedShape = () => {
-  const { fetchedData } = useCart();
+  const { fetchedData, handleAddItem } = useCart();
   const limitedData = fetchedData?.slice(0, 13); // limiting data to show only products 10 to 20
 
   return (
@@ -18,6 +18,7 @@ export const RoundedShape = () => {
             key={item.id}
             className={styles.product}
             style={{ color: "black" }}
+            onClick={() => handleAddItem(item)}
           >
             <div
               className={styles.roundDiv}
