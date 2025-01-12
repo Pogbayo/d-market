@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import axios, { AxiosResponse } from "axios";
+import { useNavigate } from "react-router-dom";
 
 export type APIResponse = {
   id: string;
@@ -61,6 +62,8 @@ type CartContextType = {
   showModal: boolean;
   openModal: (item: Item) => void;
   closeModal: () => void;
+  isLoading: boolean;
+  handleProductClick: (item: recentlyFeaturedDataProp) => void;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -82,6 +85,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = (item: Item) => {
     setSelectedItem(item);
@@ -101,6 +106,15 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         return [...prevItems, item];
       }
     });
+  };
+
+  const handleProductClick = (item: recentlyFeaturedDataProp) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("viewProduct");
+      openModal(item);
+    }, 2000);
   };
 
   const addItem = (item: cartItem) => {
@@ -131,12 +145,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           "https://api.escuelajs.co/api/v1/products"
         );
         setFetchedData(response.data);
+        console.log(fetchedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -157,6 +173,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         showModal,
         openModal,
         closeModal,
+        isLoading,
+        handleProductClick,
       }}
     >
       {children}

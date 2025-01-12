@@ -2,7 +2,7 @@ import { useCart } from "../../lib/usecart";
 import styles from "./amazing.module.css";
 import { useState, useEffect } from "react";
 
-export const AmazingDeals = () => {
+export const Suggestion = () => {
   const { fetchedData } = useCart();
   const limitedData = fetchedData?.slice(10, 23);
 
@@ -45,7 +45,7 @@ export const AmazingDeals = () => {
         </>
       ) : (
         <>
-          <h2>Amazing deals, updated daily</h2>
+          <h2>Suggested for you</h2>
           <div className={styles.productWrapper}>
             {limitedData?.map((item) => {
               const slashedPrice = Number(item.price) * 2;

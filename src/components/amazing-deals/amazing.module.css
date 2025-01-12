@@ -92,8 +92,9 @@
   }
   
   .product img {
-    width: 200px;
-    height: 50%;
+    width: 100%;
+    height: 70%;
+    padding: 0;
     border-radius: 20px;
   }
   
@@ -168,10 +169,11 @@
       padding: 0;
     }
     .product {
-      max-width: 170px;
+      max-width: 190px;
       margin-left: 10px;
       margin-right: 10px;
     }
+
     .slashedPrice {
       display: flex;
       color: gray;

@@ -20,7 +20,6 @@ export const Viewedproduct = () => {
               src={item.images[0]}
               className={styles.boxImage}
               onClick={() => openModal(item)}
-              alt="Product Thumbnail"
             />
           </div>
         ))}
@@ -34,11 +33,7 @@ export const Viewedproduct = () => {
               size={50}
               className={`${styles.logo} ${styles.prevLogo}`}
             />
-            <img
-              src={selectedItem.images[0]}
-              className={styles.mainImage}
-              alt="Selected Product"
-            />
+            <img src={selectedItem.images[0]} className={styles.mainImage} />
             <MdNavigateNext
               size={50}
               className={`${styles.logo} ${styles.nextLogo}`}
