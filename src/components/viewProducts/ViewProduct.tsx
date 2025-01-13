@@ -9,8 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export const Viewedproduct = () => {
-  const { selectedItem, showModal, recentlyFeaturedData, openModal } =
-    useCart();
+  const {
+    selectedItem,
+    showModal,
+    recentlyFeaturedData,
+    openModal,
+    addItemToCart,
+  } = useCart();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -75,7 +80,12 @@ export const Viewedproduct = () => {
                 <span className={styles.quantity}>0</span>
                 <button className={styles.increaseBtn}>+</button>
               </div>
-              <button className={styles.cartButton}>Add to Cart</button>
+              <button
+                onClick={() => addItemToCart(selectedItem)}
+                className={styles.cartButton}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

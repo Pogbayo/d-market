@@ -9,7 +9,7 @@ export const RecentlyViewedTwo = () => {
     useCart();
   const slicedData = fetchedData?.slice(1, 5) || [];
   const lastDataImageUrl =
-    fetchedData && fetchedData[10] ? fetchedData[40].images[1] : null;
+    fetchedData && fetchedData[10] ? fetchedData[20].images[1] : null;
   const [isLoading, setIsLoading] = useState(true);
   const handleItemClick = (item: APIResponse) => {
     openModal(item);

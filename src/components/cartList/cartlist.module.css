@@ -1,0 +1,11 @@
+.container{
+    border: 2px solid red;
+    height: 100vh;
+    color: black;
+}
+.box{
+    border: 2px solid black;
+    height: 200px;
+    color: black;
+
+}

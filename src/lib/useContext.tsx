@@ -14,12 +14,20 @@ export type APIResponse = {
     name: string;
     image: string;
   };
+  quantity: number;
 };
 
 type cartItem = {
   id: string;
-  name: string;
+  title: string;
+  description: string;
   price: number;
+  images: string[];
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
   quantity: number;
 };
 export type recentlyFeaturedDataProp = {
@@ -33,6 +41,7 @@ export type recentlyFeaturedDataProp = {
     name: string;
     image: string;
   };
+  quantity: number;
 };
 export type Item = {
   id: string;
@@ -45,13 +54,14 @@ export type Item = {
     name: string;
     image: string;
   };
+  quantity: number;
 };
 type CartContextType = {
   items: cartItem[];
   name: string;
   setName: (name: string) => void;
-  addItem: (item: cartItem) => void;
-  removeItem: (id: string) => void;
+  addItemToCart: (item: cartItem) => void;
+  removeItemFromCart: (id: string) => void;
   clearCart: () => void;
   fetchedData: APIResponse[] | null;
   recentlyFeaturedData: recentlyFeaturedDataProp[] | [];
@@ -64,6 +74,7 @@ type CartContextType = {
   closeModal: () => void;
   isLoading: boolean;
   handleProductClick: (item: recentlyFeaturedDataProp) => void;
+  // cartList: APIResponse[] | null;
   handleAddItem: (item: recentlyFeaturedDataProp) => void;
 };
 
@@ -79,7 +90,7 @@ type CartProviderProps = {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<cartItem[]>([]);
   const [name, setName] = useState<string>("Adebayo");
-  const [fetchedData, setFetchedData] = useState<APIResponse[] | []>([]); // State to store API response
+  const [fetchedData, setFetchedData] = useState<APIResponse[] | []>([]);
   const [recentlyFeaturedData, setrecentlyFeaturedData] = useState<
     recentlyFeaturedDataProp[] | []
   >([]);
@@ -87,6 +98,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
+  // const [cartList, setCartList] = useState<cartItem[] | []>([]);
   const navigate = useNavigate();
 
   const openModal = (item: Item) => {
@@ -122,7 +134,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     handleProductClick(item);
   };
 
-  const addItem = (item: cartItem) => {
+  const addItemToCart = (item: cartItem) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
       if (existingItem) {
@@ -133,9 +145,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         return [...prevItems, item];
       }
     });
+    // setCartList((prevCartList) => {
+    //   const existingItem = prevCartList.find((i) => i.id === item.id);
+    //   if (existingItem) {
+    //     return prevCartList.map((i) =>
+    //       i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+    //     );
+    //   } else {
+    //     return [...prevCartList, item];
+    //   }
+    // });
+
+    console.log(items);
   };
 
-  const removeItem = (id: string) => {
+  const removeItemFromCart = (id: string) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
@@ -165,8 +189,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       value={{
         items,
         name,
-        addItem,
-        removeItem,
+        addItemToCart,
+        removeItemFromCart,
         clearCart,
         setName,
         fetchedData,
@@ -181,6 +205,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         isLoading,
         handleProductClick,
         handleAddItem,
+        // cartList,
       }}
     >
       {children}
