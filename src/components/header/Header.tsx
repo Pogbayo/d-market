@@ -31,16 +31,15 @@ export const Header = () => {
 
   useEffect(() => {
     if (searchQuery) {
-      setShowResults(true); // Show results when there's a search query
+      setShowResults(true);
     } else {
-      setShowResults(false); // Hide results when there's no query
+      setShowResults(false);
     }
 
-    // Add event listener for clicks outside the search area
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleClickOutside); // Clean up the event listener
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [searchQuery]);
 
@@ -49,7 +48,7 @@ export const Header = () => {
       <div className={styles.oga}>
         <header className={styles.header}>
           <div className={styles.upperDiv}>
-            <h2 className={styles.logo}>Dark</h2>
+            <h2 className={styles.logo}>Lore </h2>
             <div className={styles.catSearchDiv}>
               <div className={styles.categoriesDiv}>
                 <GiHamburgerMenu size={25} /> <small>categories</small>
@@ -64,7 +63,6 @@ export const Header = () => {
                 />
                 <span className={styles.searchIcon}></span>
 
-                {/* Display the search results dropdown if searchQuery is not empty */}
                 {showResults &&
                   searchQuery &&
                   (filteredData ?? []).length > 0 && (
@@ -72,7 +70,6 @@ export const Header = () => {
                       {filteredData?.map((item) => (
                         <div key={item.id} className={styles.resultItem}>
                           <p>{item.title}</p>
-                          {/* <p>{item.price} USD</p> */}
                         </div>
                       ))}
                     </div>

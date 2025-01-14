@@ -13,6 +13,7 @@ import { CartList } from "../cartList/CartList";
 import { useCart } from "../../lib/usecart";
 import { SvgLoader } from "../svg-loader/SvgLoader";
 import styles from "./home.module.css"; // Assuming your CSS file is named home.module.css
+import AdminPanel from "../Admin/AdminPanel";
 
 export const Home = () => {
   const { isLoading } = useCart();
@@ -42,6 +43,7 @@ export const Home = () => {
           />
           <Route path="viewProduct" element={<Viewedproduct />} />
           <Route path="cartlist" element={<CartList />} />
+          <Route path="admin" element={<AdminPanel />} />
         </Routes>
       </div>
     </Layout>

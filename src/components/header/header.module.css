@@ -41,7 +41,6 @@
 }
 
 
-/* Hiding scrollbar but maintaining scroll functionality */
 .resultsBox {
   position: absolute;
   top: 100%;
@@ -57,17 +56,16 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-top: 5px;
   padding: 10px 0;
-  padding-right: 10px; /* To prevent the scrollbar from covering content */
+  padding-right: 10px; 
 }
 
-/* Hide the scrollbar (Webkit browsers) */
 .resultsBox::-webkit-scrollbar {
   display: none;
 }
 
 .resultsBox {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;    
 }
 
 .resultItem {
@@ -201,22 +199,24 @@
     gap: 20px;
     margin: 0;
   }
-  @media (min-width: 970px) and (max-width: 1200px) {
+  /* @media (min-width: 970px) and (max-width: 1200px) {
    .iconsDiv{
     width: 40%;
    }
    
   }
-  
+   */
 
 
   /* Media Query */
   @media (max-width: 997px) {
     .header {
       /* background-color: purple; */
+      padding: 5px 10px;
       width: 95%;
-      padding-left: 10px !important;
+      padding-left: 1px !important;
     }
+  
     .upperDiv{
         margin: 0;
     }
@@ -226,7 +226,7 @@
     .iconsDiv {
         display: flex;
         justify-content: space-between;
-        width: 55%;
+        width: 35%;
         gap: 4px;
         margin: 0;
         align-items: center;
@@ -266,6 +266,9 @@
     }
   }
   @media (max-width: 500px) {
+    .header{
+      pad: 0;
+    }
    .searchInput{
     width: 100%;
    }
@@ -276,5 +279,9 @@
     align-items: center;
     width: 100%;
     margin-top: 0;
+  }
+  .iconsDiv{
+    width: 200px;
+    padding: 0;
   }
   }
