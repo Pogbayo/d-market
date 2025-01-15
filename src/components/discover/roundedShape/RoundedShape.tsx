@@ -3,7 +3,7 @@ import styles from "./roundedShape.module.css";
 
 export const RoundedShape = () => {
   const { fetchedData, handleAddItem } = useCart();
-  const limitedData = fetchedData?.slice(0, 13); // limiting data to show only products 10 to 20
+  const limitedData = fetchedData?.slice(0, 4); // limiting data to show only products 10 to 20
 
   return (
     <div className={styles.container}>

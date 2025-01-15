@@ -57,7 +57,7 @@
     scroll-behavior: smooth; 
     padding-bottom: 10px; 
     scrollbar-width: none; 
-    padding-left: 75px;
+    padding-left: 5px;
     -ms-overflow-style: none; 
   }
   /* .roundedShapeWrapper :first-child{
