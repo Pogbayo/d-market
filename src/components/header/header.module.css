@@ -199,13 +199,19 @@
     gap: 20px;
     margin: 0;
   }
-  /* @media (min-width: 970px) and (max-width: 1200px) {
+  @media (min-width: 970px) and (max-width: 1200px) {
    .iconsDiv{
     width: 40%;
    }
-   
+   .categoriesDiv{
+    display: none;
+   }
+   .catSearchDiv{
+    display: flex;  
+    justify-content: center;
+   }
   }
-   */
+  
 
 
   /* Media Query */
@@ -226,7 +232,7 @@
     .iconsDiv {
         display: flex;
         justify-content: space-between;
-        width: 35%;
+        width: 30%;
         gap: 4px;
         margin: 0;
         align-items: center;

@@ -6,8 +6,8 @@ const router = express.Router(); // Create a router object.
 // Register a new user
 router.post("/register", async (req, res) => {
     try {
-      const { name, email, password } = req.body; // Extract details from the request body.
-      const user = new User({ name, email, password }); // Create a new user instance.
+      const { name, email, password,isAdmin } = req.body; // Extract details from the request body.
+      const user = new User({ name, email, password,isAdmin }); // Create a new user instance.
       await user.save(); // Save the user in the database.
       res.status(201).json({ message: "User registered successfully!" }); // Respond with success.
     } catch (error) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./adminpanel.module.css";
 
 interface Product {
@@ -19,6 +19,9 @@ const AdminPanel = () => {
     images: [],
     quantity: 0,
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -43,6 +46,9 @@ const AdminPanel = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setIsLoading(true);
+    setIsSuccess(false); // Reset success state
+
     const formData = new FormData();
     formData.append("id", product.id);
     formData.append("title", product.title);
@@ -62,18 +68,31 @@ const AdminPanel = () => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("Product added successfully!", data);
+        setIsSuccess(true);
       } else {
         console.log("Error adding product:", data.error);
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setIsLoading(false); // Hide loading state
     }
   };
 
+  // Automatically hide success message after 2 seconds
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000); // Hide after 3 seconds (1 second for fadeIn + 2 seconds for fadeOut)
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Post deetz</div>
+      <div className={styles.header}>Post Product</div>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
@@ -122,10 +141,21 @@ const AdminPanel = () => {
           onChange={handleImageChange}
           className={styles.fileInput}
         />
-        <button type="submit" className={styles.submitButton}>
-          Submit
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={isLoading}
+        >
+          {isLoading ? "Submitting..." : "Submit"}
         </button>
       </form>
+
+      {isSuccess && (
+        <div className={styles.successMessage}>
+          <div className={styles.checkmark}></div>
+          <p>Product added successfully!</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
     cb(null, "uploads/"); // Specify the folder to save uploaded images
   },
   filename: (req, file, cb) => {
-    // Generate a unique filename based on timestamp and file extension
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
@@ -21,13 +20,11 @@ const upload = multer({ storage });
 // Add a new product (with image handling)
 router.post("/add", upload.array("images", 5), async (req, res) => {
   try {
-    console.log(req.body); // Log the textual form data (id, title, etc.)
-    console.log(req.files); // Log the uploaded image files (or undefined if no files uploaded)
+    console.log(req.body); //
+    console.log(req.files); 
 
-    // Extract product data from the request body
     const { id, title, description, price, quantity } = req.body;
 
-    // Check if there are any files uploaded (req.files could be undefined)
     const images = req.files ? (req.files as Express.Multer.File[]).map((file) => file.path) : []; // If no files, default to an empty array
 
     // Create a new product document with the received data
