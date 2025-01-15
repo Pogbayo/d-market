@@ -5,11 +5,12 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FaOpencart } from "react-icons/fa";
 import styles from "./header.module.css";
 import { useCart } from "../../lib/usecart";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { searchQuery, setSearchQuery, fetchedData } = useCart();
   const [showResults, setShowResults] = useState(false);
-
+  const navigate = useNavigate();
   // Filter the fetchedData based on the searchQuery
   const filteredData = fetchedData?.filter(
     (item) =>
@@ -42,6 +43,11 @@ export const Header = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [searchQuery]);
+
+  const location = useLocation();
+  if (location.pathname === "/") {
+    return null; // Don't render header on the welcome page
+  }
 
   return (
     <div>
@@ -87,7 +93,7 @@ export const Header = () => {
               <p>Sign in</p>
               <MdFavoriteBorder size={30} />
               <LuGift size={30} />
-              <FaOpencart size={30} />
+              <FaOpencart size={30} onClick={() => navigate("welcome")} />
             </div>
           </div>
           <div className={styles.lowerDiv}>

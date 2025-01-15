@@ -1,10 +1,15 @@
+import { useLocation } from "react-router-dom"; // Import useLocation from react-router-dom
 import styles from "./footer.module.css";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsGlobeAmericas } from "react-icons/bs";
-import { useLocation } from "react-router-dom";
 
 export const Footer = () => {
   const location = useLocation(); // Get the current location
+
+  // Check if the current location is the 'welcome' route
+  if (location.pathname === "/") {
+    return null; // Don't render anything when on the Welcome page
+  }
 
   const textarray = [
     {
@@ -20,6 +25,7 @@ export const Footer = () => {
       text: "Your privacy is the highest priority of our dedicated team. And if you ever need assistance, we are always ready to step in for support.",
     },
   ];
+
   return (
     <div>
       {location.pathname === "/" && (
@@ -48,7 +54,7 @@ export const Footer = () => {
       <div style={{ color: "black" }} className={styles.footer}>
         <div className={styles.firstDiv}>
           <p>
-            Yes! Send me exclusive offers,unique gift ideas, and personalized
+            Yes! Send me exclusive offers, unique gift ideas, and personalized
             tips for shopping and selling on Dark.
           </p>
           <div className={styles.subscribe}>
@@ -72,13 +78,13 @@ export const Footer = () => {
             <div>
               <p>Shop</p>
               <ul>
-                <li>GIft cards</li>
+                <li>Gift cards</li>
                 <li>Dark Registry</li>
                 <li>Sitemap</li>
                 <li>Dark blog</li>
                 <li>Dark United Kingdom</li>
                 <li>Dark Germany</li>
-                <li>Dark Canada </li>
+                <li>Dark Canada</li>
               </ul>
             </div>
             <div>
@@ -106,7 +112,7 @@ export const Footer = () => {
               <p>Help</p>
               <ul>
                 <li>Help center</li>
-                <li> Privacy center</li>
+                <li>Privacy center</li>
               </ul>
             </div>
           </section>
@@ -123,7 +129,7 @@ export const Footer = () => {
           </ul>
 
           <section className={styles.spanTwo}>
-            <p>© 2025 Dark, Inc. Te </p>
+            <p>© 2025 Dark, Inc. Te</p>
             <ul>
               <li>Terms of use</li>
               <li>Privacy</li>

@@ -14,20 +14,19 @@ import { useCart } from "../../lib/usecart";
 import { SvgLoader } from "../svg-loader/SvgLoader";
 import styles from "./home.module.css"; // Assuming your CSS file is named home.module.css
 import AdminPanel from "../Admin/AdminPanel";
+import { WelcomePage } from "../welcome-page/Welcome";
 
 export const Home = () => {
   const { isLoading } = useCart();
 
   return (
     <Layout>
-      {/* Render loader if loading */}
       {isLoading && <SvgLoader />}
-
-      {/* Apply blur effect when loading */}
       <div className={isLoading ? styles.blurred : ""}>
         <Routes>
+          <Route path="/" element={<WelcomePage />} />
           <Route
-            path="/"
+            path="home"
             element={
               <>
                 <Board />
