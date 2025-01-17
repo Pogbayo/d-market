@@ -1,10 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../lib/usecart";
+import { APIResponse } from "../../../lib/useContext";
 import styles from "./improvement.module.css";
 
 export const HomeImprovement = () => {
-  const { fetchedData } = useCart();
+  const { fetchedData, handleAddItem } = useCart();
   const slicedData = fetchedData?.slice(5, 7);
   const limitedData = fetchedData?.slice(5, 9);
+  const navigate = useNavigate();
+
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.upperDiv}>
@@ -22,6 +33,7 @@ export const HomeImprovement = () => {
             <div
               key={item.id}
               className={styles.productCard}
+              onClick={() => handleClick(item)}
               style={{ backgroundImage: `url(${item.images})` }}
             >
               <div className={styles.priceTag}>USD {item.price}</div>
@@ -35,6 +47,7 @@ export const HomeImprovement = () => {
             <div
               key={item.id}
               className={styles.roductCard}
+              onClick={() => handleClick(item)}
               style={{ backgroundImage: `url(${item.images})` }}
             >
               <div className={styles.riceTag}>USD {item.price}</div>

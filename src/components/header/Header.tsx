@@ -94,7 +94,7 @@ export const Header = () => {
             <div className={styles.iconsDiv}>
               <p>Sign in</p>
               <MdFavoriteBorder size={30} />
-              <LuGift size={30} />
+              <LuGift size={30} onClick={() => navigate("admin")} />
               <FaOpencart size={30} onClick={() => navigate("cartlist")} />
             </div>
           </div>

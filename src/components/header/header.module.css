@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Script-like, bubbly font */
 
 .upperDiv {
   display: flex;
@@ -39,7 +39,6 @@
   outline: none;
   box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
 }
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Script-like, bubbly font */
 
 .logo {
   font-size: 3.5rem;
@@ -62,7 +61,6 @@
   transform: scale(1.15); /* Slight zoom effect on hover */
   text-shadow: 5px 5px 20px rgba(255, 0, 150, 0.7); /* Enhanced glow on hover */
 }
-
 
 .resultsBox {
   position: absolute;
@@ -305,5 +303,6 @@
   }
   .logo{
     font-size: 1.5rem;
+    padding: 10px 10px;
   }
   }

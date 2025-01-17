@@ -12,6 +12,8 @@ interface Product {
 }
 
 const AdminPanel = () => {
+  const { items } = useCart();
+
   const [product, setProduct] = useState<Product>({
     id: "",
     title: "",
@@ -20,10 +22,9 @@ const AdminPanel = () => {
     images: [],
     quantity: 0,
   });
-  const { items } = useCart();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

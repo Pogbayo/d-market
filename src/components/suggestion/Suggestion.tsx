@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../lib/usecart";
+import { APIResponse } from "../../lib/useContext";
 import styles from "./suggestion.module.css";
 import { useState, useEffect } from "react";
 
 export const Suggestion = () => {
-  const { fetchedData } = useCart();
+  const { fetchedData, handleAddItem } = useCart();
   const limitedData = fetchedData?.slice(10, 23);
+  const navigate = useNavigate();
 
   const truncateDescription = (description: string) => {
     const words = description.split(" ");
@@ -12,6 +15,12 @@ export const Suggestion = () => {
       return `${words.slice(0, 3).join(" ")}...`;
     }
     return description;
+  };
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
   };
 
   const parseImageUrl = (imageUrl: string) => {
@@ -52,7 +61,11 @@ export const Suggestion = () => {
               const imageSrc = parseImageUrl(item.images[0]);
 
               return (
-                <div key={item.id} className={styles.product}>
+                <div
+                  key={item.id}
+                  className={styles.product}
+                  onClick={() => handleClick(item)}
+                >
                   <img src={imageSrc} alt="" className={styles.imagesrc} />
                   <p className={styles.desc}>
                     {typeof item.category === "string"

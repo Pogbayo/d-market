@@ -3,12 +3,16 @@ body {
     font-family: 'Poppins', sans-serif; /* Apply the font globally */
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9; /* Optional: light background for better contrast */
   }
 .cartContainer {
-    padding: 20px;
+    padding: 90px;
     max-width: 1200px;
     margin: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-family: 'Arial', sans-serif;
   }
   
@@ -28,9 +32,11 @@ body {
   
   .cartImage {
     width: 80%;
+    max-width: 300px;
     background-position: center;
     background-size: contain;
     height: 250px;
+    margin-top: 20px;
   }
   
   .cartContent {
@@ -45,6 +51,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     display: flex;
+    width: auto;
     flex-direction: column;
     align-items: center; /* Center content horizontally */
     text-align: center;  /* Center text inside the card */

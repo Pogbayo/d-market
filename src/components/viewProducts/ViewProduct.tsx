@@ -7,6 +7,7 @@ import { Editor } from "../Editor/Editor";
 import { Suggestion } from "../suggestion/Suggestion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { SvgLoader } from "../svg-loader/SvgLoader";
 
 export const Viewedproduct = () => {
   const {
@@ -15,8 +16,12 @@ export const Viewedproduct = () => {
     recentlyFeaturedData,
     openModal,
     addItemToCart,
+    isLoading,
+    items,
   } = useCart();
   const navigate = useNavigate();
+  const filteredData = recentlyFeaturedData?.slice(0, 5);
+  const targetId = items.some((product) => product.id === selectedItem?.id);
 
   useEffect(() => {
     if (!selectedItem) {
@@ -28,8 +33,10 @@ export const Viewedproduct = () => {
 
   return (
     <div className={styles.container}>
+      {isLoading && <SvgLoader />}
+
       <div className={styles.sideBar}>
-        {recentlyFeaturedData.map((item) => (
+        {filteredData.map((item) => (
           <div className={styles.box} key={item.id}>
             <img
               src={item.images[0]}
@@ -84,7 +91,7 @@ export const Viewedproduct = () => {
                 onClick={() => addItemToCart(selectedItem)}
                 className={styles.cartButton}
               >
-                Add to Cart
+                {!targetId ? "Add to cart" : "Added"}
               </button>
             </div>
           </div>

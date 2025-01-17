@@ -1,8 +1,9 @@
 import { useCart } from "../../lib/usecart";
 import styles from "./cartlist.module.css";
+import { FaOpencart } from "react-icons/fa";
 
 export const CartList = () => {
-  const { items } = useCart();
+  const { items, removeItemFromCart } = useCart();
 
   return (
     <div className={styles.cartContainer}>
@@ -22,12 +23,24 @@ export const CartList = () => {
                   USD {item.price.toFixed(2)}
                 </p>
               </div>
-              <button className={styles.cartButton}>Remove from Cart</button>
+              <button
+                onClick={() => removeItemFromCart(item.id)}
+                className={styles.cartButton}
+              >
+                Remove from Cart
+              </button>
             </div>
           ))}
         </div>
       ) : (
-        <p className={styles.emptyCart}>Your cart is empty. Start shopping!</p>
+        <>
+          <p className={styles.emptyCart}>
+            Your cart is empty. Start shopping!
+          </p>
+          <div>
+            <FaOpencart size={90} color="black" />
+          </div>
+        </>
       )}
     </div>
   );

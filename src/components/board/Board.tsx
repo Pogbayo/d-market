@@ -5,7 +5,8 @@ export const Board = () => {
       <section className={styles.imgContainer}>
         <img
           className={styles.imgOne}
-          src="/images/ecommerce-3640321.jpg"
+          // src="/images/ecommerce-3640321.jpg"
+          src="/public/images/daniel-3T2HhfFwEog-unsplash.jpg"
           alt=""
         />
         <img

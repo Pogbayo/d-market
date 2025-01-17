@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../lib/usecart";
 import { APIResponse } from "../../../lib/useContext";
 import styles from "./box.module.css";
 
@@ -6,13 +8,21 @@ interface FeaturedCategoriesProps {
 }
 
 export const FeaturedBox: React.FC<FeaturedCategoriesProps> = ({ data }) => {
+  const { handleAddItem } = useCart();
   const limitedData = data?.slice(0, 13);
+  const navigate = useNavigate();
   const truncateDescription = (description: string) => {
     const words = description.split(" ");
     if (words.length > 3) {
       return `${words.slice(0, 3).join(" ")}...`;
     }
     return description;
+  };
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
   };
   return (
     <div className={styles.container}>
@@ -21,7 +31,11 @@ export const FeaturedBox: React.FC<FeaturedCategoriesProps> = ({ data }) => {
         {limitedData?.map((item) => {
           const slashedPrice = Number(item.price) * 2;
           return (
-            <div key={item.id} className={styles.product}>
+            <div
+              key={item.id}
+              className={styles.product}
+              onClick={() => handleClick(item)}
+            >
               <img src={`${item.images}`} alt="" />
               <p className={styles.desc}>
                 {typeof item.description === "string"
