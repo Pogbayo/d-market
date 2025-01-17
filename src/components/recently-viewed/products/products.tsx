@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../lib/usecart";
+import { APIResponse } from "../../../lib/useContext";
 import styles from "./products.module.css";
 
 export const Products = () => {
   const { fetchedData, handleAddItem } = useCart();
+  const navigate = useNavigate();
   const limitedData = fetchedData?.slice(0, 13);
-
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
+  };
   return (
     <div className={styles.container}>
       {limitedData?.map((item) => {
@@ -15,7 +23,7 @@ export const Products = () => {
 
         return (
           <div
-            onClick={() => handleAddItem(item)}
+            onClick={() => handleClick(item)}
             key={item.id}
             className={styles.product}
             style={{ backgroundImage: `url(${imageSrc})` }}

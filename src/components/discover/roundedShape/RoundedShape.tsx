@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../lib/usecart";
+import { APIResponse } from "../../../lib/useContext";
 import styles from "./roundedShape.module.css";
 
 export const RoundedShape = () => {
+  const navigate = useNavigate();
   const { fetchedData, handleAddItem } = useCart();
   const limitedData = fetchedData?.slice(0, 4); // limiting data to show only products 10 to 20
-
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
+  };
   return (
     <div className={styles.container}>
       {limitedData?.map((item) => {
@@ -18,7 +26,7 @@ export const RoundedShape = () => {
             key={item.id}
             className={styles.product}
             style={{ color: "black" }}
-            onClick={() => handleAddItem(item)}
+            onClick={() => handleClick(item)}
           >
             <div
               className={styles.roundDiv}

@@ -5,7 +5,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FaOpencart } from "react-icons/fa";
 import styles from "./header.module.css";
 import { useCart } from "../../lib/usecart";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { searchQuery, setSearchQuery, fetchedData } = useCart();
@@ -44,17 +44,19 @@ export const Header = () => {
     };
   }, [searchQuery]);
 
-  const location = useLocation();
-  if (location.pathname === "/") {
-    return null; // Don't render header on the welcome page
-  }
+  // const location = useLocation();
+  // if (location.pathname === "/") {
+  //   return null;
+  // }
 
   return (
     <div>
       <div className={styles.oga}>
         <header className={styles.header}>
           <div className={styles.upperDiv}>
-            <h2 className={styles.logo}>Lore </h2>
+            <h2 className={styles.logo} onClick={() => navigate("/")}>
+              Lore{" "}
+            </h2>
             <div className={styles.catSearchDiv}>
               <div className={styles.categoriesDiv}>
                 <GiHamburgerMenu size={25} /> <small>categories</small>
@@ -93,7 +95,7 @@ export const Header = () => {
               <p>Sign in</p>
               <MdFavoriteBorder size={30} />
               <LuGift size={30} />
-              <FaOpencart size={30} onClick={() => navigate("welcome")} />
+              <FaOpencart size={30} onClick={() => navigate("cartlist")} />
             </div>
           </div>
           <div className={styles.lowerDiv}>

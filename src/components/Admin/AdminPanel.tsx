@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./adminpanel.module.css";
+import { useCart } from "../../lib/usecart";
 
 interface Product {
   id: string;
@@ -19,6 +20,7 @@ const AdminPanel = () => {
     images: [],
     quantity: 0,
   });
+  const { items } = useCart();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -140,7 +142,18 @@ const AdminPanel = () => {
           multiple
           onChange={handleImageChange}
           className={styles.fileInput}
-        />
+        />{" "}
+        <div>
+          {items?.map((i) => {
+            return (
+              <div>
+                <p>{i.category.id}</p>
+                <p>{i.price}</p>
+                hello
+              </div>
+            );
+          })}
+        </div>
         <button
           type="submit"
           className={styles.submitButton}

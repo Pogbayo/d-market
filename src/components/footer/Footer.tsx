@@ -6,11 +6,6 @@ import { BsGlobeAmericas } from "react-icons/bs";
 export const Footer = () => {
   const location = useLocation(); // Get the current location
 
-  // Check if the current location is the 'welcome' route
-  if (location.pathname === "/") {
-    return null; // Don't render anything when on the Welcome page
-  }
-
   const textarray = [
     {
       title: "A community doing good",
@@ -28,7 +23,7 @@ export const Footer = () => {
 
   return (
     <div>
-      {location.pathname === "/" && (
+      {location.pathname === "/home" && (
         <div className={styles.yellowBackground}>
           <p className={styles.mainQstn}>What is Dark</p>
           <a href="" className={styles.link}>

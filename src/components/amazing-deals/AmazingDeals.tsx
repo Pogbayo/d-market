@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../lib/usecart";
+import { APIResponse } from "../../lib/useContext";
 import styles from "./amazing.module.css";
 
 export const AmazingDeals = () => {
   const { fetchedData, handleAddItem } = useCart();
   const limitedData = fetchedData?.slice(10, 23);
+  const navigate = useNavigate();
 
   const truncateDescription = (description: string) => {
     const words = description.split(" ");
@@ -12,7 +15,12 @@ export const AmazingDeals = () => {
     }
     return description;
   };
-
+  const handleClick = (item: APIResponse) => {
+    handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
+  };
   const parseImageUrl = (imageUrl: string) => {
     try {
       const parsed = JSON.parse(imageUrl);
@@ -38,7 +46,7 @@ export const AmazingDeals = () => {
             <div
               key={item.id}
               className={styles.product}
-              onClick={() => handleAddItem(item)}
+              onClick={() => handleClick(item)}
             >
               <img src={imageSrc} alt="" className={styles.imagesrc} />
               <p className={styles.desc}>

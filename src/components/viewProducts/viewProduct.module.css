@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  padding: 20px;
+  padding: 10px;
   color: #333;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #f9f9f9;
@@ -9,14 +9,15 @@
   max-width: 1500px;
   margin: 0 auto;
   gap: 10px;
+  height: auto;
   flex-direction: column;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .sideBar {
   width: 100%;
   border-radius: 10px;
-  margin-top: 20px;
+  margin: 0;
   gap: 10px;
   display: flex;
 }
@@ -47,7 +48,9 @@
 .productDetailDiv {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
+  height: auto;
+
 }
 
 .mainImage {
@@ -59,10 +62,13 @@
 .categoryDiv {
   flex: 1;
   padding: 20px;
+  margin: 0;
+
 }
 
 .Title {
   font-size: 2rem;
+  margin: 0;
   font-weight: 900;
 }
 
@@ -228,8 +234,11 @@
 @media (max-width: 576px) {
   .container {
     padding: 1px;
+    gap: 0;
   }
-
+  .box{
+    margin-bottom: 0;
+  }
   .Title {
     font-size: 1.5rem;
   }
@@ -241,9 +250,13 @@
   .Description {
     font-size: 0.9rem;
   }
+  .productDetailDiv {
+    gap: 10px;
+  }
+
   .mainImage {
-    max-width: 80%;
-    height: auto;
+    max-width: 85%;
+    height: 280px;
     margin: 0 auto;
   }
   .mainImageContainer{

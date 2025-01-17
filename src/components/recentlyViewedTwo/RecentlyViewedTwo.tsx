@@ -3,18 +3,28 @@ import { useCart } from "../../lib/usecart";
 import styles from "./recentlyviewedtwo.module.css";
 import { useState, useEffect } from "react";
 import { APIResponse } from "../../lib/useContext";
+import { useNavigate } from "react-router-dom";
 
 export const RecentlyViewedTwo = () => {
-  const { fetchedData, recentlyFeaturedData, openModal, handleAddItem } =
-    useCart();
+  const { fetchedData, recentlyFeaturedData, handleAddItem } = useCart();
+  const navigate = useNavigate();
+
   const slicedData = fetchedData?.slice(1, 5) || [];
   const lastDataImageUrl =
     fetchedData && fetchedData[1] ? fetchedData[1].images[0] : null;
   const [isLoading, setIsLoading] = useState(true);
-  const handleItemClick = (item: APIResponse) => {
-    openModal(item);
+  // const handleItemClick = (item: APIResponse) => {
+  //   openModal(item);
+  //   handleAddItem(item);
+  // };
+
+  const handleClick = (item: APIResponse) => {
     handleAddItem(item);
+    setTimeout(() => {
+      navigate("/viewProduct");
+    }, 2000);
   };
+
   useEffect(() => {
     if (fetchedData && fetchedData.length > 0) {
       setTimeout(() => {
@@ -43,7 +53,7 @@ export const RecentlyViewedTwo = () => {
                       className={
                         recentlyFeaturedData ? styles.img : styles.shimmer
                       }
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleClick(item)}
                       src={item.images[0]}
                       alt=""
                       key={item.id}
