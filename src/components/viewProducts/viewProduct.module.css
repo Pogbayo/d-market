@@ -81,9 +81,9 @@
 }
 
 .Price {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 900;
-  color: rgb(3, 200, 3);
+  color: black;
   margin-bottom: 15px;
 }
 
@@ -140,7 +140,7 @@
 }
 
 .cartButton {
-  background-color: #5bbc5e;
+  background-color: black;
   color: white;
   border: none;
   padding: 10px 20px;

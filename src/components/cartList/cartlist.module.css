@@ -88,8 +88,8 @@ body {
 
 .cartItemPrice {
     font-size: 1.4rem;
-    color: #27ae60; /* Green */
-    font-weight: 700;
+    color:black; /* Green */
+    font-weight: 900;
     margin-bottom: 10px;
 }
 
