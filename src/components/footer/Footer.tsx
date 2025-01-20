@@ -21,7 +21,7 @@ export const Footer = () => {
     },
   ];
 
-  if (location.pathname === "/sign-in" || location.pathname === "/sign-up") {
+  if (location.pathname === "/" || location.pathname === "/sign-up") {
     return null;
   }
 

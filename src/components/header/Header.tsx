@@ -47,7 +47,7 @@ export const Header = () => {
   }, [searchQuery]);
 
   const location = useLocation();
-  if (location.pathname === "/sign-in" || location.pathname === "/sign-up") {
+  if (location.pathname === "/" || location.pathname === "/sign-up") {
     return null;
   }
 
@@ -58,6 +58,7 @@ export const Header = () => {
       navigate("cartlist");
     }, 2000);
   };
+
   const handleLogOut = () => {
     localStorage.removeItem("token");
     navigate("/sign-in");
