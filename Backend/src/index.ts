@@ -1,35 +1,26 @@
-import express, { Application } from "express"; 
-import mongoose from "mongoose"; 
-import dotenv from "dotenv"; 
-import userRoutes from "./routes/userRoutes"; 
-import productRoutes from "./routes/productRoutes"; 
-import cors from "cors"; 
+import express, { Application } from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
 
-dotenv.config(); 
+dotenv.config();
 
-const app: Application = express(); 
+const app: Application = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());
- 
-app.use(express.json()); 
 
-// console.log(process.env.MONGO_URL); 
+app.use(express.json());
+
 mongoose
   .connect(process.env.MONGO_URL as string)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
 
-app.use("/api/users", userRoutes); 
-app.use("/api/products", productRoutes); 
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running `);
 });
-
-
-// const user = { id: 1, username: 'user' };
-// const token = jwt.sign(user, process.env.JWT_SECRET as string, { expiresIn: '5h' });
-// console.log('Generated Token:', token);
-
-
-

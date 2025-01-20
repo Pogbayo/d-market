@@ -4,7 +4,6 @@ import path from "path"; // Path module to manage file paths.
 import Product from "../models/Product"; // Import the Product model.
 const router = express.Router(); // Create a router object.
 
-
 // Set up multer storage options
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -15,17 +14,16 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage }); 
-
+const upload = multer({ storage });
 
 router.post("/add", upload.array("images", 5), async (req, res) => {
   try {
-    console.log(req.body); //
-    console.log(req.files); 
 
     const { id, title, description, price, quantity } = req.body;
 
-    const images = req.files ? (req.files as Express.Multer.File[]).map((file) => file.path) : []; // If no files, default to an empty array
+    const images = req.files
+      ? (req.files as Express.Multer.File[]).map((file) => file.path)
+      : []; // If no files, default to an empty array
 
     // Create a new product document with the received data
     const product = new Product({
