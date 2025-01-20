@@ -68,7 +68,7 @@ export const Footer = () => {
               <div>
                 <p>Shop</p>
                 <ul>
-                  <li>Gift cards</li>
+                  <li>Gift card</li>
                   <li>Dark Registry</li>
                   <li>Sitemap</li>
                   <li>Dark blog</li>
