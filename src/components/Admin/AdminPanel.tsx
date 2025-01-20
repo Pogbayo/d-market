@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./adminpanel.module.css";
 import { useCart } from "../../lib/usecart";
+// import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -11,8 +13,16 @@ interface Product {
   quantity: number;
 }
 
+// interface DecodedToken {
+//   id: string;
+//   isAdmin: boolean;
+// }
+
 const AdminPanel = () => {
   const { items } = useCart();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  console.log("Token is", token);
 
   const [product, setProduct] = useState<Product>({
     id: "",
@@ -84,14 +94,21 @@ const AdminPanel = () => {
 
   // Automatically hide success message after 2 seconds
   useEffect(() => {
+    // if (token) {
+    //   const decodedToken: DecodedToken = jwtDecode(token);
+    //   if (!decodedToken.isAdmin) {
+    //     navigate("/home");
+    //   }
+    // }
+
     if (isSuccess) {
       const timer = setTimeout(() => {
         setIsSuccess(false);
-      }, 3000); // Hide after 3 seconds (1 second for fadeIn + 2 seconds for fadeOut)
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate, token]);
 
   return (
     <div className={styles.container}>

@@ -1,174 +1,168 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 body {
-    font-family: 'Poppins', sans-serif; /* Apply the font globally */
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-  }
-.cartContainer {
-    padding: 90px;
-    max-width: 1200px;
-    margin: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .cartTitle {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #222;
-    font-weight: bold;
-  }
-  
-  .cartItems {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  
-  .cartImage {
-    width: 80%;
-    max-width: 300px;
-    background-position: center;
-    background-size: contain;
-    height: 250px;
-    margin-top: 20px;
-  }
-  
-  .cartContent {
-    padding: 15px;
-  }
-
-  .cartCard {
-    background-color: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    display: flex;
-    width: auto;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    text-align: center;  /* Center text inside the card */
-  }
-  
-  .cartCard:hover {
-    transform: translateY(-5px);
-  }
-  
-  .cartButton {
-    background-color: red;
-    border-radius: 30px;
-    margin: 10px 0; /* Add some vertical spacing */
-    width: 30%;
-    padding: 10px; /* Adjust padding for better responsiveness */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cartButton:hover {
-    background-color: darkred; /* Add a hover effect */
-  }
-  
-  
-  .cartItemTitle {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+    background-color: #f5f5f5;
     color: #333;
-  }
-  
-  .cartItemPrice {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 0;
-  }
-  
-  .cartItemQuantity {
+}
+
+.cartContainer {
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cartTitle {
     font-size: 1rem;
-    color: #888;
-  }
-  
-  .emptyCart {
-    font-size: 1.5rem;
-    color: #666;
     text-align: center;
-    margin-top: 50px;
-  }
-  
-  .featuredSection {
-    margin-top: 50px;
-  }
-  
-  .featuredTitle {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #444;
-  }
-  
-  .featuredGrid {
+    margin-bottom: 40px;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cartItems {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-  }
-  
-  .featuredCard {
-    background-color: #fafafa;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .featuredImage {
     width: 100%;
-    height: 150px;
+    padding:10px 20px;
+    margin-top: 30px;
+
+}
+
+.cartCard {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;  /* Vertically align content */
+    text-align: left;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    min-height: 150px;  /* Ensure minimum height for the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .cartCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+} */
+
+.cartImage {
+    width: 180px;
+    height: 90%;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .featuredPrice {
-    font-size: 1rem;
+    margin-right: 20px;  /* Space between image and content */
+    transition: transform 0.3s ease;
+}
+
+.cartCard:hover .cartImage {
+    transform: scale(1.05);
+}
+
+.cartContent {
+    width: 100%;
+    flex-grow: 1;  /* Let content take up remaining space */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Vertically align content */
+}
+
+.cartItemTitle {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 15px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.cartItemPrice {
+    font-size: 1.4rem;
+    color: #27ae60; /* Green */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cartItemQuantity {
+    font-size: 1.1rem;
     color: #555;
-    margin-top: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .cartTitle,
-    .featuredTitle {
-      font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cartButton {
+    background: #e63946; /* Red */
+    border: none;
+    border-radius: 30px;
+    padding: 12px 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: auto;
+    font-size: 10px;
+    margin-top: 15px;
+}
+
+.cartButton:hover {
+    background: #d32f2f;
+}
+
+/* Empty Cart Message */
+.emptyCart {
+    font-size: 2rem;
+    color: #777;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 600;
+}
+
+/* Icon for empty cart */
+.emptyCart div {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .cartItems {
+        grid-template-columns: repeat(2, 1fr);
     }
-  
-    .cartContent {
-      padding: 10px;
+    .cartTitle {
+        font-size: 2.5rem;
     }
-  
-    .cartItemTitle {
-      font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .cartItems {
+        grid-template-columns: 1fr;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .cartTitle,
-    .featuredTitle {
-      font-size: 1.8rem;
+    .cartCard {
+        padding: 15px;
     }
-  
-    .cartItemPrice,
-    .cartItemQuantity {
-      font-size: 0.9rem;
+    .cartTitle {
+        font-size: 2rem;
     }
-  
-    .featuredPrice {
-      font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    .cartTitle {
+        font-size: 1.8rem;
     }
-  }
-  
+    .cartCard {
+        padding: 10px;
+        height: auto; /* Allow height to adjust on small screens */
+    }
+    .emptyCart {
+        font-size: 1.5rem;
+    }
+}

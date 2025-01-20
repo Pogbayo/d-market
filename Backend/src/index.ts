@@ -25,3 +25,11 @@ app.use("/api/products", productRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// const user = { id: 1, username: 'user' };
+// const token = jwt.sign(user, process.env.JWT_SECRET as string, { expiresIn: '5h' });
+// console.log('Generated Token:', token);
+
+
+

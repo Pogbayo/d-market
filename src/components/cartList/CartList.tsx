@@ -22,13 +22,14 @@ export const CartList = () => {
                 <p className={styles.cartItemPrice}>
                   USD {item.price.toFixed(2)}
                 </p>
+                <p style={{ color: "black" }}>Quantity: {item.quantity}</p>
+                <button
+                  onClick={() => removeItemFromCart(item.id)}
+                  className={styles.cartButton}
+                >
+                  Remove from Cart
+                </button>
               </div>
-              <button
-                onClick={() => removeItemFromCart(item.id)}
-                className={styles.cartButton}
-              >
-                Remove from Cart
-              </button>
             </div>
           ))}
         </div>

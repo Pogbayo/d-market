@@ -17,11 +17,13 @@ export const Viewedproduct = () => {
     openModal,
     addItemToCart,
     isLoading,
+    increaseQuantity,
+    decreaseQuantity,
     items,
   } = useCart();
   const navigate = useNavigate();
   const filteredData = recentlyFeaturedData?.slice(0, 5);
-  const targetId = items.some((product) => product.id === selectedItem?.id);
+  const targetId = items.find((product) => product.id === selectedItem?.id);
 
   useEffect(() => {
     if (!selectedItem) {
@@ -48,7 +50,9 @@ export const Viewedproduct = () => {
       </div>
 
       <div className={styles.productDiv}>
-        <h2 className={styles.Title}>{selectedItem.title}</h2>
+        <h2 className={styles.Title} style={{ fontWeight: 100, fontSize: 20 }}>
+          {selectedItem.title}
+        </h2>
         <div className={styles.productDetailDiv}>
           <div className={styles.mainImageContainer}>
             <GrFormPrevious
@@ -83,9 +87,21 @@ export const Viewedproduct = () => {
 
             <div className={styles.addToCart}>
               <div className={styles.quantityControl}>
-                <button className={styles.decreaseBtn}>-</button>
-                <span className={styles.quantity}>0</span>
-                <button className={styles.increaseBtn}>+</button>
+                <button
+                  className={styles.decreaseBtn}
+                  onClick={() => decreaseQuantity(targetId || selectedItem)}
+                >
+                  -
+                </button>
+                <span className={styles.quantity}>
+                  {targetId?.quantity ?? 0}
+                </span>
+                <button
+                  className={styles.increaseBtn}
+                  onClick={() => increaseQuantity(targetId || selectedItem)}
+                >
+                  +
+                </button>
               </div>
               <button
                 onClick={() => addItemToCart(selectedItem)}

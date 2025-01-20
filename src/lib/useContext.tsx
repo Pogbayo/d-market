@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import axios, { AxiosResponse } from "axios";
 
 export type APIResponse = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -17,7 +17,7 @@ export type APIResponse = {
 };
 
 type cartItem = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -30,7 +30,7 @@ type cartItem = {
   quantity: number;
 };
 export type recentlyFeaturedDataProp = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -43,7 +43,7 @@ export type recentlyFeaturedDataProp = {
   quantity: number;
 };
 export type Item = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -61,7 +61,7 @@ type CartContextType = {
   name: string;
   setName: (name: string) => void;
   addItemToCart: (item: cartItem) => void;
-  removeItemFromCart: (id: string) => void;
+  removeItemFromCart: (id: number) => void;
   clearCart: () => void;
   fetchedData: APIResponse[] | null;
   recentlyFeaturedData: recentlyFeaturedDataProp[] | [];
@@ -73,8 +73,13 @@ type CartContextType = {
   openModal: (item: Item) => void;
   closeModal: () => void;
   isLoading: boolean;
+  cartCount: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setIsLoading: any;
   handleProductClick: (item: recentlyFeaturedDataProp) => void;
   // cartList: APIResponse[] | null;
+  increaseQuantity: (item: cartItem) => void;
+  decreaseQuantity: (item: cartItem) => void;
   handleAddItem: (item: recentlyFeaturedDataProp) => void;
 };
 
@@ -90,7 +95,7 @@ type CartProviderProps = {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<APIResponse[]>([]);
   const cartValue = useMemo(() => ({ items, setItems }), [items]);
-
+  const cartCount = items.length;
   // const [items, setItems] = useState<cartItem[]>(() => {
   //   const savedCart = localStorage.getItem("cartItems");
   //   return savedCart ? JSON.parse(savedCart) : [];
@@ -104,7 +109,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const [cartList, setCartList] = useState<cartItem[] | []>([]);
 
   useEffect(() => {
     if (items.length > 0) {
@@ -113,6 +117,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       localStorage.removeItem("cartItems");
     }
   }, [items]);
+
   const openModal = (item: Item) => {
     setSelectedItem(item);
     setShowModal(true);
@@ -144,7 +149,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const handleAddItem = (item: recentlyFeaturedDataProp) => {
     addToRecentlyFeaturedArray(item);
-    // openModal(item);
     handleProductClick(item);
   };
 
@@ -153,16 +157,29 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
       if (existingItem) {
         return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
       } else {
-        return [...prevItems, item];
+        return [...prevItems, { ...item, quantity: 1 }];
       }
     });
-    console.log("Is items an array?", Array.isArray(items), items); // true
+  };
+  const increaseQuantity = (item: cartItem) => {
+    setItems((prevItems) =>
+      prevItems.map((i) =>
+        i.id === item.id ? { ...i, quantity: (i.quantity || 0) + 1 } : i
+      )
+    );
+  };
+  const decreaseQuantity = (item: cartItem) => {
+    setItems((prevItems) =>
+      prevItems.map((i) =>
+        i.id === item.id ? { ...i, quantity: Math.max(i.quantity - 1, 0) } : i
+      )
+    );
   };
 
-  const removeItemFromCart = (id: string) => {
+  const removeItemFromCart = (id: number) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
@@ -190,7 +207,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        // items,
+        cartCount,
         name,
         cartValue: items,
         addItemToCart,
@@ -209,6 +226,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         isLoading,
         handleProductClick,
         handleAddItem,
+        increaseQuantity,
+        decreaseQuantity,
+        setIsLoading,
         ...cartValue,
       }}
     >

@@ -6,7 +6,7 @@ export const Board = () => {
         <img
           className={styles.imgOne}
           // src="/images/ecommerce-3640321.jpg"
-          src="/public/images/daniel-3T2HhfFwEog-unsplash.jpg"
+          src="/images/daniel-iOQ0VZN-apo-unsplash.jpg"
           alt=""
         />
         <img

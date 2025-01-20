@@ -5,10 +5,12 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FaOpencart } from "react-icons/fa";
 import styles from "./header.module.css";
 import { useCart } from "../../lib/usecart";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { SvgLoader } from "../svg-loader/SvgLoader";
 
 export const Header = () => {
-  const { searchQuery, setSearchQuery, fetchedData } = useCart();
+  const { searchQuery, setSearchQuery, fetchedData, cartCount, setIsLoading } =
+    useCart();
   const [showResults, setShowResults] = useState(false);
   const navigate = useNavigate();
   // Filter the fetchedData based on the searchQuery
@@ -17,7 +19,7 @@ export const Header = () => {
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  const token = localStorage.getItem("token");
   // Hide the result box when clicking outside
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -44,22 +46,36 @@ export const Header = () => {
     };
   }, [searchQuery]);
 
-  // const location = useLocation();
-  // if (location.pathname === "/") {
-  //   return null;
-  // }
+  const location = useLocation();
+  if (location.pathname === "/sign-in" || location.pathname === "/sign-up") {
+    return null;
+  }
 
+  const handleLoadingEffect = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("cartlist");
+    }, 2000);
+  };
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    navigate("/sign-in");
+  };
   return (
     <div>
       <div className={styles.oga}>
         <header className={styles.header}>
           <div className={styles.upperDiv}>
-            <h2 className={styles.logo} onClick={() => navigate("/")}>
+            <h2 className={styles.logo} onClick={() => navigate("/home")}>
               Lore{" "}
             </h2>
             <div className={styles.catSearchDiv}>
               <div className={styles.categoriesDiv}>
-                <GiHamburgerMenu size={25} /> <small>categories</small>
+                <GiHamburgerMenu size={25} />{" "}
+                <small style={{ fontWeight: 100, fontSize: 14 }}>
+                  categories
+                </small>
               </div>
               <div className={styles.searchDiv}>
                 <input
@@ -92,10 +108,18 @@ export const Header = () => {
               </div>
             </div>
             <div className={styles.iconsDiv}>
-              <p>Sign in</p>
+              <p
+                style={{ fontWeight: 100, fontSize: 14, cursor: "pointer" }}
+                onClick={handleLogOut}
+              >
+                {token ? "Log Out" : ""}
+              </p>
               <MdFavoriteBorder size={30} />
               <LuGift size={30} onClick={() => navigate("admin")} />
-              <FaOpencart size={30} onClick={() => navigate("cartlist")} />
+              <div style={{ position: "relative" }}>
+                <FaOpencart size={30} onClick={handleLoadingEffect} />
+                <span className={styles.cartCount}>{cartCount}</span>
+              </div>
             </div>
           </div>
           <div className={styles.lowerDiv}>
@@ -111,16 +135,22 @@ export const Header = () => {
               <small>Gifts</small>
             </span>
             <span>
-              <small>Home improvement Ideas</small>
+              <small style={{ fontWeight: 100, fontSize: 14 }}>
+                Home improvement Ideas
+              </small>
             </span>
             <span>
-              <small>Home Favorites</small>
+              <small style={{ fontWeight: 100, fontSize: 14 }}>
+                Home Favorites
+              </small>
             </span>
             <span>
-              <small>Fashion Finds</small>
+              <small style={{ fontWeight: 100, fontSize: 14 }}>
+                Fashion Finds
+              </small>
             </span>
             <span>
-              <small>Registry</small>
+              <small style={{ fontWeight: 100, fontSize: 14 }}>Registry</small>
             </span>
           </div>
         </header>
