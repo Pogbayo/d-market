@@ -47,7 +47,11 @@ export const Header = () => {
   }, [searchQuery]);
 
   const location = useLocation();
-  if (location.pathname === "/" || location.pathname === "/sign-up") {
+  if (
+    location.pathname === "/" ||
+    location.pathname === "/sign-up" ||
+    location.pathname === "/sign-in"
+  ) {
     return null;
   }
 
