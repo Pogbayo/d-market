@@ -55,7 +55,7 @@ export const SignIn = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Type in your username..."
+            placeholder="Type in your email..."
             className={styles.input}
             required
           />
