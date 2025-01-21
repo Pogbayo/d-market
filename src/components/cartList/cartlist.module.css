@@ -13,7 +13,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 .cartTitle {
@@ -150,19 +149,75 @@ body {
         padding: 15px;
     }
     .cartTitle {
-        font-size: 2rem;
+        font-size: 0.5rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    .cartContainer {
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
     .cartTitle {
-        font-size: 1.8rem;
-    }
-    .cartCard {
-        padding: 10px;
-        height: auto; /* Allow height to adjust on small screens */
-    }
-    .emptyCart {
         font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .cartItems {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px 5px;
+    }
+
+    .cartCard {
+        width: 100%; /* Make cards full width */
+        min-height: 140px;
+        padding: 10px;
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .cartImage {
+        width: 90%; /* Reduce image size */
+        height: 200px;
+        margin: 0 auto 11px auto; /* Center image */
+    }
+
+    .cartContent {
+        padding: 0;
+        text-align: center;
+    }
+
+    .cartItemTitle {
+        font-size: 1.2rem;
+    }
+
+    .cartItemPrice {
+        font-size: 1.2rem;
+    }
+
+    .cartItemQuantity {
+        font-size: 0.2rem;
+    }
+
+    .cartButton {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        margin: 10px auto 0 auto;
+        display: inline-block;
+        width: 200px;
+    }
+
+    .emptyCart {
+        font-size: 1.4rem;
+        margin-top: 30px;
+    }
+
+    .emptyCart div {
+        font-size: 4rem; /* Icon size */
     }
 }
