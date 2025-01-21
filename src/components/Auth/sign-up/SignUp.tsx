@@ -54,7 +54,7 @@ export const SignUp = () => {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
-        <h2 className={styles.heading}>Sign Up</h2>
+        <h2 className={styles.heading}>Register</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             type="text"

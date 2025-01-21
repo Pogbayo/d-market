@@ -26,7 +26,6 @@
   border-radius: 40px;
   padding: 25px 35px;
   border: 5px solid rgb(255, 255, 255);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
   margin: 50px auto;
 }
 
@@ -34,23 +33,21 @@
   text-align: center;
   font-weight: 900;
   font-size: 30px;
-  color: rgb(16, 137, 211);
+  color: black;
 }
 
 .form {
   margin-top: 20px;
 }
-
 .input {
   width: 100%;
   background: white;
-  border: none;
+  border: 1px solid gray;
   padding: 15px 20px;
   border-radius: 20px;
   margin-top: 15px;
-  color: rgb(16, 137, 211);
-  box-shadow: #cff0ff 0px 10px 10px -5px;
-  border-inline: 2px solid transparent;
+  color: black;
+  margin-bottom: 15px;
 }
 
 .input::placeholder {
@@ -59,29 +56,25 @@
 
 .input:focus {
   outline: none;
-  border-inline: 2px solid #12b1d1;
 }
 
 .button {
   display: block;
   width: 100%;
   font-weight: bold;
-  background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
   color: white;
+  background-color: black;
   padding-block: 15px;
   margin: 20px auto;
   border-radius: 20px;
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
   border: none;
   transition: all 0.2s ease-in-out;
 }
 
 .button:hover {
   transform: scale(1.03);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
 }
 
 .button:active {
   transform: scale(0.95);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
 }
