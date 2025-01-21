@@ -119,7 +119,7 @@ const AdminPanel = () => {
           name="id"
           value={product.id}
           onChange={handleChange}
-          placeholder="Product ID"
+          placeholder="ID"
           className={styles.input}
         />
         <input
@@ -127,14 +127,14 @@ const AdminPanel = () => {
           name="title"
           value={product.title}
           onChange={handleChange}
-          placeholder="Product Title"
+          placeholder=" name"
           className={styles.input}
         />
         <textarea
           name="description"
           value={product.description}
           onChange={handleChange}
-          placeholder="Product Description"
+          placeholder=" Description"
           className={styles.textarea}
         />
         <input
@@ -142,7 +142,7 @@ const AdminPanel = () => {
           name="price"
           value={product.price}
           onChange={handleChange}
-          placeholder="Product Price(NGN)"
+          placeholder=" Price(NGN)"
           className={styles.input}
         />
         <input
@@ -150,7 +150,7 @@ const AdminPanel = () => {
           name="quantity"
           value={product.quantity}
           onChange={handleChange}
-          placeholder="Product Quantity"
+          placeholder=" Quantity"
           className={styles.input}
         />
         <input

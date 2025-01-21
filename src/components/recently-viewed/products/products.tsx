@@ -6,7 +6,7 @@ import styles from "./products.module.css";
 export const Products = () => {
   const { fetchedData, handleAddItem } = useCart();
   const navigate = useNavigate();
-  const limitedData = fetchedData?.slice(0, 13);
+  const limitedData = fetchedData?.slice(0, 5);
   const handleClick = (item: APIResponse) => {
     handleAddItem(item);
     setTimeout(() => {

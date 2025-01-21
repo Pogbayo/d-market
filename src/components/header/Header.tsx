@@ -120,7 +120,7 @@ export const Header = () => {
                 {token ? "Log Out" : ""}
               </p>
               <MdFavoriteBorder size={30} />
-              <LuGift size={30} onClick={() => navigate("admin")} />
+              <LuGift size={30} />
               <div style={{ position: "relative" }}>
                 <FaOpencart size={30} onClick={handleLoadingEffect} />
                 <span className={styles.cartCount}>{cartCount}</span>
