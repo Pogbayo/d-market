@@ -61,7 +61,7 @@ export const SignIn = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Type in your email..."
+            placeholder="type in your email..."
             className={styles.input}
             required
           />
@@ -70,7 +70,7 @@ export const SignIn = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Enter password..."
+            placeholder="enter password..."
             className={styles.input}
             required
           />

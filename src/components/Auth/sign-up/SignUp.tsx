@@ -87,7 +87,7 @@ export const SignUp = () => {
             <div className={styles.spinner}></div>
           ) : (
             <button className={styles.button} type="submit">
-              Sign In
+              Sign up
             </button>
           )}
 
