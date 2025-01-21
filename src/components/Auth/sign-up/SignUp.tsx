@@ -19,13 +19,16 @@ export const SignUp = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...formData, isAdmin: false }), // Explicitly set isAdmin
-      });
+      const response = await fetch(
+        "https://backend-3zc2.onrender.com/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, isAdmin: false }), // Explicitly set isAdmin
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
