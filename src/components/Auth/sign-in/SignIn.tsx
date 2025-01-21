@@ -3,6 +3,7 @@ import styles from "./signIn.module.css";
 import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,6 +19,7 @@ export const SignIn = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://backend-3zc2.onrender.com/api/users/login",
@@ -35,7 +37,6 @@ export const SignIn = () => {
         console.log("User successfully logged in");
         localStorage.setItem("token", data.token);
         localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin)); // Store admin status
-        console.log(data.isAdmin);
         setFormData({ email: "", password: "" });
       } else {
         console.error("Error", data.error);
@@ -45,6 +46,8 @@ export const SignIn = () => {
       }
     } catch (error) {
       console.error("Login failed", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -71,9 +74,13 @@ export const SignIn = () => {
             className={styles.input}
             required
           />
-          <button className={styles.button} type="submit">
-            Sign In
-          </button>
+          {isLoading ? (
+            <div className={styles.spinner}></div>
+          ) : (
+            <button className={styles.button} type="submit">
+              Sign In
+            </button>
+          )}
         </form>
         <div style={{ display: "flex", gap: 15 }}>
           <span style={{ color: "black", fontSize: 15 }}>

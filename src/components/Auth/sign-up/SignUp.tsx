@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./signUp.module.css";
 import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,6 +20,7 @@ export const SignUp = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://backend-3zc2.onrender.com/api/users/register",
@@ -43,6 +46,8 @@ export const SignUp = () => {
       }
     } catch (error) {
       console.error("Network error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,9 +83,14 @@ export const SignUp = () => {
             onChange={handleChange}
             required
           />
-          <button type="submit" className={styles.button}>
-            Register
-          </button>
+          {isLoading ? (
+            <div className={styles.spinner}></div>
+          ) : (
+            <button className={styles.button} type="submit">
+              Sign In
+            </button>
+          )}
+
           <div style={{ display: "flex", gap: 15 }}>
             <span style={{ color: "black", fontSize: 15 }}>
               Already have an account?
