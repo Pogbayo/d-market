@@ -13,14 +13,13 @@ export const Header = () => {
     useCart();
   const [showResults, setShowResults] = useState(false);
   const navigate = useNavigate();
-  // Filter the fetchedData based on the searchQuery
   const filteredData = fetchedData?.filter(
     (item) =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const token = localStorage.getItem("token");
-  // Hide the result box when clicking outside
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       event.target &&
@@ -28,7 +27,7 @@ export const Header = () => {
       event.target &&
       !(event.target as Element).closest(`.${styles.resultsBox}`)
     ) {
-      setShowResults(false); // Close the result box if clicked outside
+      setShowResults(false);
     }
   };
 
@@ -65,8 +64,10 @@ export const Header = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
+    console.log("successful logout");
     navigate("/sign-in");
   };
+
   return (
     <div>
       <div className={styles.oga}>

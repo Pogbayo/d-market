@@ -36,7 +36,7 @@ export const SignIn = () => {
       if (response.ok) {
         console.log("User successfully logged in");
         localStorage.setItem("token", data.token);
-        localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin)); // Store admin status
+        localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin));
         setFormData({ email: "", password: "" });
       } else {
         console.error("Error", data.error);

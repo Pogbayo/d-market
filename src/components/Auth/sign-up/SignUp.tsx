@@ -29,14 +29,14 @@ export const SignUp = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...formData, isAdmin: false }), // Explicitly set isAdmin
+          body: JSON.stringify({ ...formData, isAdmin: false }),
         }
       );
 
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("signUpToken", data.token);
-        localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin)); // Store admin status
+        localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin));
 
         console.log(data.isAdmin);
         setFormData({ name: "", email: "", password: "" });
