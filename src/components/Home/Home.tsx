@@ -15,12 +15,12 @@ import { useEffect } from "react";
 
 export const Home = () => {
   const { isLoading } = useCart();
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  if (!token) {
-    navigate("/sign-in");
-  }
+  // if (!token) {
+  //   navigate("/sign-in");
+  // }
   // const navigate = useNavigate();
 
   useEffect(() => {

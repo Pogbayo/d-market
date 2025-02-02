@@ -22,9 +22,9 @@ export const Footer = () => {
   ];
 
   if (
-    location.pathname === "/" ||
     location.pathname === "/sign-up" ||
-    location.pathname === "/sign-in"
+    location.pathname === "/sign-in" ||
+    location.pathname === "/cartlist"
   ) {
     return null;
   }

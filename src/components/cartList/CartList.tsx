@@ -1,13 +1,20 @@
+import { useEffect } from "react";
 import { useCart } from "../../lib/usecart";
 import styles from "./cartlist.module.css";
 import { FaOpencart } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 export const CartList = () => {
+  const navigate = useNavigate();
   const { items, removeItemFromCart } = useCart();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/sign-in");
+    }
+  });
 
   return (
     <div className={styles.cartContainer}>
-      <h1 className={styles.cartTitle}>Your Shopping Cart</h1>
       {items.length > 0 ? (
         <div className={styles.cartItems}>
           {items.map((item) => (

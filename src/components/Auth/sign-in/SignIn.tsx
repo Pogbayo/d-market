@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styles from "./signIn.module.css";
 import { useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 export const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -38,19 +40,25 @@ export const SignIn = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("isAdmin", JSON.stringify(data.isAdmin));
         setFormData({ email: "", password: "" });
+        setError("");
       } else {
         console.error("Error", data.error);
+        setError(data.error || "An unexpected error occurred.");
       }
+
       if (data.token) {
-        navigate("/home");
+        navigate("/");
       }
     } catch (error) {
       console.error("Login failed", error);
+      setError("Invalid email or password");
     } finally {
       setIsLoading(false);
     }
   };
-
+  setTimeout(() => {
+    setError("");
+  }, 7000);
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
@@ -82,7 +90,7 @@ export const SignIn = () => {
             </button>
           )}
         </form>
-        <div style={{ display: "flex", gap: 15 }}>
+        <div style={{ display: "flex", gap: 15 }} className={styles.downPanel}>
           <span style={{ color: "black", fontSize: 15 }}>
             Don't have an account?
           </span>
@@ -92,7 +100,11 @@ export const SignIn = () => {
           >
             Register
           </span>
+          <span className={styles.goHome}>
+            <FaHome size={25} onClick={() => navigate("/")} />
+          </span>
         </div>
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </div>
   );

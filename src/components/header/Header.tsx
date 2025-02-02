@@ -46,11 +46,7 @@ export const Header = () => {
   }, [searchQuery]);
 
   const location = useLocation();
-  if (
-    location.pathname === "/" ||
-    location.pathname === "/sign-up" ||
-    location.pathname === "/sign-in"
-  ) {
+  if (location.pathname === "/sign-up" || location.pathname === "/sign-in") {
     return null;
   }
 
@@ -73,7 +69,7 @@ export const Header = () => {
       <div className={styles.oga}>
         <header className={styles.header}>
           <div className={styles.upperDiv}>
-            <h2 className={styles.logo} onClick={() => navigate("/home")}>
+            <h2 className={styles.logo} onClick={() => navigate("/")}>
               Lore{" "}
             </h2>
             <div className={styles.catSearchDiv}>

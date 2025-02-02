@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./signUp.module.css";
 import { useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+
 export const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -91,7 +93,10 @@ export const SignUp = () => {
             </button>
           )}
 
-          <div style={{ display: "flex", gap: 15 }}>
+          <div
+            style={{ display: "flex", gap: 15 }}
+            className={styles.downPanel}
+          >
             <span style={{ color: "black", fontSize: 15 }}>
               Already have an account?
             </span>
@@ -99,8 +104,10 @@ export const SignUp = () => {
               style={{ color: "rgb(16, 137, 211)", cursor: "Pointer" }}
               onClick={() => navigate("/sign-in")}
             >
-              {" "}
               Login
+            </span>
+            <span className={styles.goHome}>
+              <FaHome size={25} onClick={() => navigate("/")} />
             </span>
           </div>
         </form>
