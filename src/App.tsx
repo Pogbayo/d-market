@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,23 +13,8 @@ import AdminPanel from "./components/Admin/AdminPanel";
 import { Layout } from "./components/layout/Layout";
 import { SignUp } from "./components/Auth/sign-up/SignUp";
 import { SignIn } from "./components/Auth/sign-in/SignIn";
-import { useEffect } from "react";
-import axios from "axios";
 
-const KeepServerAlive = () => {
-  setInterval(async () => {
-    try {
-      await axios.get("https://your-backend-url.onrender.com/ping"),
-        console.log("Ping sent to the server to keep it alive");
-    } catch (error) {
-      console.error("failed to ping server:", error);
-    }
-  }, 14 * 60 * 1000);
-};
 export const App = () => {
-  useEffect(() => {
-    KeepServerAlive();
-  });
   return (
     <CartProvider>
       <Router>

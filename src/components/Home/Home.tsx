@@ -12,6 +12,18 @@ import { SvgLoader } from "../svg-loader/SvgLoader";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
+import axios from "axios";
+
+const KeepServerAlive = () => {
+  setInterval(async () => {
+    try {
+      await axios.get("https://your-backend-url.onrender.com/ping");
+      console.log("Ping sent to the server to keep it alive");
+    } catch (error) {
+      console.error("failed to ping server:", error);
+    }
+  }, 14 * 60 * 1000);
+};
 
 export const Home = () => {
   const { isLoading } = useCart();
@@ -45,6 +57,7 @@ export const Home = () => {
         navigate("/sign-in");
       }
     }
+    KeepServerAlive();
   }, [navigate]);
   return (
     <>
